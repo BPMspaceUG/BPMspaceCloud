@@ -49,9 +49,10 @@ fi
 
 echo "Check if the script runs for the first time ...";
 
-if [ -z "$DOCKER_ENV" ]; then 
-	echo "First Installation $DOCKER_ENV does not exist"
+if [ "$DOCKER_ENV" = "" ]; then 
+	echo "Scipt runs for the first time"
 	echo "DOCKER_ENV=$1" >> /etc/environment
+	export DOCKER_ENV=$1
 	FIRSTTIME="TRUE";
 else
  echo "SCRIPT was running at least once ... check something else";
