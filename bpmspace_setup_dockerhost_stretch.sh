@@ -79,7 +79,7 @@ echo " "
 id -u rootmessages &>/dev/null || adduser --quiet --disabled-password --gecos "" rootmessages 
 id -u rootmessages &>/dev/null || adduser rootmessages sudo
 
-echo "let's clone the BPMspaceUG GIT repo...."
+echo "let's clone the BPMspaceUG GIT repo..if First time or git pull the newest version"
 cd /home/rootmessages
 if [ "$FIRSTTIME"="TRUE" ]; then
 	git clone https://github.com/BPMspaceUG/linux_config_script_files_II.git
