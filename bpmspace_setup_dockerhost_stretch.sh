@@ -56,7 +56,7 @@ if [ -z "$DOCKER_ENV+x" ]; then
 else
  echo "SCRIPT was running at least once ... check something else";
  if [ "$DOCKER_ENV" == "$ENV" ]; then
-	echo "$DOCKER_ENV and $ENV are identical: '$ENV', we can go on ...."
+	echo "Existing Environment $DOCKER_ENV and requested $ENV envoronment are identical: '$ENV', we can go on ...."
 	FIRSTTIME=FALSE;
 	else
 	echo "You are triying to install a $ENV environment to an existing $DOCKER_ENV environment DANGER! DANGER! DANGER! Over and Out"
@@ -87,9 +87,11 @@ if [ "$FIRSTTIME"="TRUE" ]; then
 else
 	git -C /home/rootmessages/linux_config_script_files_II/ pull
 	git -C /home/rootmessages/bpmspace_docker2/ pull;
+fi
 
 echo "let's set hostname to $HOST"
 echo $HOST > /etc/hostname
+
 
 apt update > /dev/null 2>&1
 
