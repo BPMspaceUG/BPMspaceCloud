@@ -55,16 +55,14 @@ if [ -z "$DOCKER_ENV+x" ]; then
 	FIRSTTIME=TRUE;
 else
  echo "SCRIPT was running at least once ... check something else";
- if [ "$DOCKER_ENV" == "$ENV"]; then
-	echo "$DOCKER_ENV and $ENV are identical: '$ENV'"
+ if [ "$DOCKER_ENV" == "$ENV" ]; then
+	echo "$DOCKER_ENV and $ENV are identical: '$ENV', we can go on ...."
 	FIRSTTIME=FALSE;
 	else
-	echo "$DOCKER_ENV and $ENV are NOT identical DANGER! and exit"
+	echo "You are triying to install a $ENV environment to an existing $DOCKER_ENV environment DANGER! DANGER! DANGER! Over and Out"
 	exit 1;
  fi
 fi
-
-
 
 apt update > /dev/null 2>&1
 
@@ -83,8 +81,12 @@ id -u rootmessages &>/dev/null || adduser rootmessages sudo
 
 echo "let's clone the BPMspaceUG GIT repo...."
 cd /home/rootmessages
-git clone https://github.com/BPMspaceUG/linux_config_script_files_II.git
-git clone https://github.com/BPMspaceUG/bpmspace_docker2.git
+if [ "$FIRSTTIME"="TRUE" ]; then
+	git clone https://github.com/BPMspaceUG/linux_config_script_files_II.git
+	git clone https://github.com/BPMspaceUG/bpmspace_docker2.git;
+else
+	git -C /home/rootmessages/linux_config_script_files_II/ pull
+	git -C /home/rootmessages/bpmspace_docker2/ pull;
 
 echo "let's set hostname to $HOST"
 echo $HOST > /etc/hostname
