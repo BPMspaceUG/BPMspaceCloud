@@ -93,7 +93,7 @@ echo "let's set hostname to $HOST"
 echo $HOST > /etc/hostname
 
 
-apt update > /dev/null 2>&1
+apt update > /dev/null 2>&1 
 
 echo " "
 echo "SET SSH PORT to 7070"
