@@ -82,7 +82,7 @@ apt update > /dev/null 2>&1
 echo " "
 echo "SET SSH Serever to 7070"
 mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
-cd /home/rootmessagesroot
+cd /home/rootmessages
 cp linux_config_script_files_II/dockerhost/daemon/sshd/sshd_config /etc/ssh/
 mkdir /home/rootmessages/.ssh
 chmod 700 /home/rootmessages/.ssh
