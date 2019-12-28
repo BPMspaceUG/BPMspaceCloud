@@ -71,7 +71,7 @@ echo "let's clone the BPMspaceUG GIT repo...."
 cd /home/rootmessages
 git clone https://github.com/BPMspaceUG/linux_config_script_files_II.git
 git clone https://github.com/BPMspaceUG/bpmspace_docker2.git
-chown -R rootmessages /home/rootmessages
+chown -R rootmessages:rootmessages /home/rootmessages
 
 
 echo "let's set hostname"
@@ -81,11 +81,9 @@ apt update > /dev/null 2>&1
 
 echo " "
 echo "SET SSH Serever to 7070"
-cd /home/rootmessages
-cp linux_config_script_files_II/dockerhost/daemon/sshd/sshd_config /etc/ssh/
+cp /home/rootmessages/linux_config_script_files_II/dockerhost/daemon/sshd/sshd_config /etc/ssh/
 mkdir /home/rootmessages/.ssh
-chmod 700 /home/rootmessages/.ssh
-cp linux_config_script_files_II/dockerhost/authorized_keys/authorized_keys /home/rootmessages/.ssh
+cp /home/rootmessages/linux_config_script_files_II/dockerhost/authorized_keys/authorized_keys /home/rootmessages/.ssh
 
 # Firewall stuff
 echo "adding iptables script to /etc/rc.local"
@@ -151,6 +149,7 @@ echo " "
 passwd root
 
 chown -R rootmessages:rootmessages /home/rootmessages
+chmod 600 /home/rootmessages/.ssh
 echo " "
 echo "setup done. Please reboot"
 echo " "
