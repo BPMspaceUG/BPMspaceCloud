@@ -52,12 +52,12 @@ echo "Check if the script runs for the first time ...";
 if [ -z "$DOCKER_ENV+x" ]; then 
 	echo "First Installation $DOCKER_ENV does not exist"
 	echo "DOCKER_ENV=$1" >> /etc/environment
-	FIRSTTIME=TRUE;
+	FIRSTTIME="TRUE";
 else
  echo "SCRIPT was running at least once ... check something else";
  if [ "$DOCKER_ENV" == "$ENV" ]; then
 	echo "Existing Environment $DOCKER_ENV and requested $ENV envoronment are identical: '$ENV', we can go on ...."
-	FIRSTTIME=FALSE;
+	FIRSTTIME="FALSE";
 	else
 	echo "You are triying to install a $ENV environment to an existing $DOCKER_ENV environment DANGER! DANGER! DANGER! Over and Out"
 	exit 1;
@@ -81,7 +81,7 @@ id -u rootmessages &>/dev/null || adduser rootmessages sudo
 
 echo "let's clone the BPMspaceUG GIT repo..if First time or git pull the newest version"
 cd /home/rootmessages
-if [ "$FIRSTTIME"="TRUE" ]; then
+if [ "$FIRSTTIME" = "TRUE" ]; then
 	git clone https://github.com/BPMspaceUG/linux_config_script_files_II.git
 	git clone https://github.com/BPMspaceUG/bpmspace_docker2.git;
 else
@@ -147,7 +147,6 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(
 apt update > /dev/null 2>&1
 apt install -y docker-ce
 systemctl status docker
-docker -v
 usermod -aG docker rootmessages
 # install docker-compsoe - https://linuxize.com/post/how-to-install-and-use-docker-compose-on-debian-9/
 echo "install docker-compose"
@@ -157,6 +156,9 @@ chmod +x /usr/local/bin/docker-compose
 # sudo rules
 echo "adding user to sudoers file...."
 echo "rootmessages   ALL=(ALL)  NOPASSWD: ALL" >> /etc/sudoers
+#set rights
+chown -R rootmessages:rootmessages /home/rootmessages
+chmod 700 /home/rootmessages/.ssh
 
 echo " "
 echo "change passwd for root - dont forget to document in lastpass"
@@ -164,9 +166,7 @@ passwd root
 echo "change passwd for rootmessages - dont forget to document in lastpass"
 passwd rootmessages
 
-
-chown -R rootmessages:rootmessages /home/rootmessages
-chmod 700 /home/rootmessages/.ssh
+set +e
 echo " "
 echo "setup done. Please reboot"
 echo " "
