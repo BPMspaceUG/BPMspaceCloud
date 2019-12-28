@@ -128,8 +128,10 @@ apt dist-upgrade -y > /dev/null 2>&1
 
 # install docker - https://linuxize.com/post/how-to-install-and-use-docker-on-debian-9/
 echo "install docker"
-apt install apt-transport-https ca-certificates curl software-properties-common gnupg2
+apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+apt update > /dev/null 2>&1
 apt install docker-ce
 systemctl status docker
 docker -v
@@ -148,7 +150,6 @@ echo "change passwd - dont forget to document in lastpass"
 echo " "
 
 passwd root
-passwd rootmessages
 
 echo " "
 echo "setup done. Please reboot"
