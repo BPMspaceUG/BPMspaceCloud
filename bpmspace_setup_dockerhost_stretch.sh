@@ -55,7 +55,7 @@ if [ -z "$DOCKER_ENV+x" ]; then
 	FIRSTTIME=TRUE;
 else
  echo "SCRIPT was running at least once ... check something else";
- if [ $DOCKER_ENV == $ENV]; then
+ if [ "$DOCKER_ENV" == "$ENV"]; then
 	echo "$DOCKER_ENV and $ENV are identical: '$ENV'"
 	FIRSTTIME=FALSE;
 	else
