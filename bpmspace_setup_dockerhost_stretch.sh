@@ -33,8 +33,6 @@ set -e  # Stop execution of this script when an error occurs
 ENV=$1
 HOST=$2
 
-
-
 usage () {
 
   echo "$0 <LIVE|NOT_LIVE> <hostname>"
@@ -61,28 +59,26 @@ echo " "
 echo "done."
 
 echo " "
-echo "creating user rootmessages..."
+echo "creating user rootmessages... if not allready exists"
 echo " "
 
-adduser --quiet rootmessages 
-adduser rootmessages sudo
+id -u rootmessages &>/dev/null || adduser --quiet --disabled-password --gecos "" rootmessages 
+id -u rootmessages &>/dev/null || adduser rootmessages sudo
 
 echo "let's clone the BPMspaceUG GIT repo...."
 cd /home/rootmessages
 git clone https://github.com/BPMspaceUG/linux_config_script_files_II.git
 git clone https://github.com/BPMspaceUG/bpmspace_docker2.git
-chown -R rootmessages:rootmessages /home/rootmessages
 
-
-echo "let's set hostname"
+echo "let's set hostname to $HOST"
 echo $HOST > /etc/hostname
 
 apt update > /dev/null 2>&1
 
 echo " "
-echo "SET SSH Serever to 7070"
+echo "SET SSH PORT to 7070"
 cp /home/rootmessages/linux_config_script_files_II/dockerhost/daemon/sshd/sshd_config /etc/ssh/
-mkdir /home/rootmessages/.ssh
+mkdir -p /home/rootmessages/.ssh
 cp /home/rootmessages/linux_config_script_files_II/dockerhost/authorized_keys/authorized_keys /home/rootmessages/.ssh
 
 # Firewall stuff
@@ -125,11 +121,11 @@ apt dist-upgrade -y > /dev/null 2>&1
 
 # install docker - https://linuxize.com/post/how-to-install-and-use-docker-on-debian-9/
 echo "install docker"
-apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+apt install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 apt update > /dev/null 2>&1
-apt install docker-ce
+apt install -y docker-ce
 systemctl status docker
 docker -v
 usermod -aG docker rootmessages
@@ -144,12 +140,13 @@ echo "rootmessages   ALL=(ALL)  NOPASSWD: ALL" >> /etc/sudoers
 
 echo " "
 echo "change passwd for root - dont forget to document in lastpass"
-echo " "
-
 passwd root
+echo "change passwd for rootmessages - dont forget to document in lastpass"
+passwd rootmessages
+
 
 chown -R rootmessages:rootmessages /home/rootmessages
-chmod 600 /home/rootmessages/.ssh
+chmod 700 /home/rootmessages/.ssh
 echo " "
 echo "setup done. Please reboot"
 echo " "
