@@ -49,7 +49,7 @@ fi
 
 echo "Check if the script runs for the first time ...";
 if [ "$DOCKER_ENV_BPMSPACE" = "LIVE" ] ||  [ "$DOCKER_ENV_BPMSPACE" = "NOT_LIVE" ]; then 
-	FIRSTTIME="FALSE";
+	FIRSTTIME="FALSE"
 else
 	FIRSTTIME="TRUE"
 fi
