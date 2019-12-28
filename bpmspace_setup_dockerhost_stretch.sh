@@ -146,7 +146,6 @@ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 apt update > /dev/null 2>&1
 apt install -y docker-ce
-systemctl status docker
 usermod -aG docker rootmessages
 # install docker-compsoe - https://linuxize.com/post/how-to-install-and-use-docker-compose-on-debian-9/
 echo "install docker-compose"
