@@ -47,7 +47,23 @@ if [ $# -ne 2 ];then
 
 fi
 
-echo "DOCKER_ENV=$1" >> /etc/environment
+echo "Chekc if the script runs for the first time ...";
+
+if [ -z "$DOCKER_ENV" ]; then 
+	echo "First Installation $DOCKER_ENV does not exist"
+	echo "DOCKER_ENV=$1" >> /etc/environment
+	FIRSTTIME=TRUE;
+else
+ echo "SCRIPT was running at least once ... check something else";
+ if [ $DOCKER_ENV == $ENV]; then
+	echo "$DOCKER_ENV and $ENV are identical: '$ENV'"
+	FIRSTTIME=FALSE;
+	else
+	echo "$DOCKER_ENV and $ENV are NOT identical DANGER! and exit"
+	exit 1;
+ fi
+fi
+
 
 
 apt update > /dev/null 2>&1
