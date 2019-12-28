@@ -48,19 +48,23 @@ if [ $# -ne 2 ];then
 fi
 
 echo "Check if the script runs for the first time ...";
+if [ "$DOCKER_ENV_BPMSPACE" = "LIVE" ] ||  [ "$DOCKER_ENV_BPMSPACE" = "NOT_LIVE" ]; then 
+	FIRSTTIME="FALSE"
+	;
+else
+	FIRSTTIME="TRUE"
+fi
 
-if [ "$DOCKER_ENV" = "" ]; then 
-	echo "Scipt runs for the first time"
-	echo "DOCKER_ENV=$1" >> /etc/environment
-	export DOCKER_ENV=$1
-	FIRSTTIME="TRUE";
+if [ "$FIRSTTIME" = "TRUE" ]; then 
+	echo "Scipt runs for the first time";
+	echo "DOCKER_ENV_BPMSPACE=$1" >> /etc/environment
+	export DOCKER_ENV_BPMSPACE=$1;
 else
  echo "SCRIPT was running at least once ... check something else";
- if [ "$DOCKER_ENV" == "$ENV" ]; then
-	echo "Existing Environment $DOCKER_ENV and requested $ENV envoronment are identical: '$ENV', we can go on ...."
-	FIRSTTIME="FALSE";
+ if [ "$DOCKER_ENV_BPMSPACE" == "$ENV" ]; then
+	echo "Existing environment $DOCKER_ENV_BPMSPACE and requested $ENV environment are identical, we can go on ....";
 	else
-	echo "You are triying to install a $ENV environment to an existing $DOCKER_ENV environment DANGER! DANGER! DANGER! Over and Out"
+	echo "You are triying to install a $ENV environment to an existing $DOCKER_ENV_BPMSPACE environment DANGER! DANGER! DANGER! Over and Out"
 	exit 1;
  fi
 fi
