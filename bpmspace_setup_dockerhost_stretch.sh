@@ -47,7 +47,7 @@ if [ $# -ne 2 ];then
 
 fi
 
-echo "Chekc if the script runs for the first time ...";
+echo "Check if the script runs for the first time ...";
 
 if [ -z "$DOCKER_ENV" ]; then 
 	echo "First Installation $DOCKER_ENV does not exist"
