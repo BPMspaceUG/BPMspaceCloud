@@ -178,14 +178,14 @@ echo "rootmessages   ALL=(ALL)  NOPASSWD: ALL" >> /etc/sudoers
 chown -R rootmessages:rootmessages /home/rootmessages
 chmod 700 /home/rootmessages/.ssh
 
+set +e
 echo " "
 echo "change passwd for rootmessages - dont forget to document in lastpass"
 passwd rootmessages
 echo "change passwd for root - dont forget to document in lastpass"
 passwd root
 
-set +e
 echo " "
-echo "setup done. ready to reboot"
+echo "setup done. ready to reboot ..."
 reboot
 
