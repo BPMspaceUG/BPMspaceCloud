@@ -40,6 +40,21 @@ usage () {
 
 }
 
+countdown() {
+        msg="Ready for REBOOT? press CTRL-C to stop"
+        clear
+        tput cup $row $col
+        echo -n "$msg"
+        l=${#msg}
+        l=$(( l+$col ))
+        for i in {5..1}
+        do
+                tput cup $row $l
+                echo -n "$i"
+                sleep 1
+        done
+}
+
 if [ $# -ne 2 ];then
 
   usage
@@ -57,7 +72,6 @@ fi
 if [ "$FIRSTTIME" = "TRUE" ]; then 
 	echo "Scipt runs for the first time";
 	echo "DOCKER_ENV_BPMSPACE=$1" >> /etc/environment
-	export DOCKER_ENV_BPMSPACE=$1;
 else
  echo "SCRIPT was running at least once ... check something else";
  if [ "$DOCKER_ENV_BPMSPACE" == "$ENV" ]; then
@@ -83,12 +97,13 @@ echo " "
 id -u rootmessages &>/dev/null || adduser --quiet --disabled-password --gecos "" rootmessages 
 id -u rootmessages &>/dev/null || adduser rootmessages sudo
 
-echo "let's clone the BPMspaceUG GIT repo..if First time or git pull the newest version"
 cd /home/rootmessages
 if [ "$FIRSTTIME" = "TRUE" ]; then
+	echo "let's clone the BPMspaceUG GIT repo since it is the first time the script is running"
 	git clone https://github.com/BPMspaceUG/linux_config_script_files_II.git
 	git clone https://github.com/BPMspaceUG/bpmspace_docker2.git;
 else
+	echo "let's pull the BPMspaceUG GIT repo since it is NOT the first time the script is running"
 	git -C /home/rootmessages/linux_config_script_files_II/ pull
 	git -C /home/rootmessages/bpmspace_docker2/ pull;
 fi
@@ -164,13 +179,14 @@ chown -R rootmessages:rootmessages /home/rootmessages
 chmod 700 /home/rootmessages/.ssh
 
 echo " "
-echo "change passwd for root - dont forget to document in lastpass"
-passwd root
 echo "change passwd for rootmessages - dont forget to document in lastpass"
 passwd rootmessages
+echo "change passwd for root - dont forget to document in lastpass"
+passwd root
 
 set +e
 echo " "
-echo "setup done. Please reboot"
-echo " "
+echo "setup done. ready to reboot"
+countdown
+reboot
 
