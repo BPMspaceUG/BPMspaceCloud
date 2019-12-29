@@ -187,6 +187,5 @@ passwd root
 set +e
 echo " "
 echo "setup done. ready to reboot"
-countdown
 reboot
 
