@@ -16,8 +16,14 @@ iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 # ausgehende Verbindungen sind erlaubt
 iptables -A OUTPUT -j ACCEPT
 
-# ssh/7070 ist erlaubt
-iptables -A INPUT -p tcp -m state --state NEW --dport 7070 -j ACCEPT
+# ssh/22 ist erlaubt
+iptables -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
+# docker SWARM
+iptables -A INPUT -p tcp -m state --state NEW --dport 2377 -j ACCEPT
+iptables -A INPUT -p tcp -m state --state NEW --dport 7946 -j ACCEPT
+iptables -A INPUT -p udp -m state --state NEW --dport 7946 -j ACCEPT
+iptables -A INPUT -p udp -m state --state NEW --dport 4789 -j ACCEPT
+
 
 # falls man mal ICMP zulassen will
 #iptables -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
