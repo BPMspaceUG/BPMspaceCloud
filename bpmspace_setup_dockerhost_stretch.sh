@@ -182,15 +182,27 @@ systemctl enable docker
 
 set +e # do NOT stop execution of this script when an error occurs
 echo " "
-
-while [ "passwd -S rootmessages | cut -d ' ' -f 2" != "P" ]
+#check if rootmessages passwd is set
+passwd_rootmessages=$(passwd -S rootmessages | cut -d ' ' -f 2)
+while [ "$passwd_rootmessages" != "P" ]
 do
-	echo "change passwd for rootmessages - dont forget to document in lastpass - rootmessages passwd MUST not be empty"
+	echo "change passwd for rootmessages - don't forget to document in lastpass - rootmessages passwd MUST not be empty"
 	passwd rootmessages
 done
 
-echo "change passwd for root - dont forget to document in lastpass - CTRL-C to interrupt - root passwd MUST not be empty"
-passwd root
+#check if root initial passwd has to be changed
+if [ "$FIRSTTIME" = "TRUE" ]; then
+	echo "change INITIAL passwd for root - dont forget to document in lastpass - root passwd MUST not be empty"
+	passwd root
+fi
+
+#check if root passwd is set
+passwd_root=$(passwd -S root | cut -d ' ' -f 2)
+while [ "$passwd_root" != "P" ]
+do
+	echo "root paaswd empty!!!! -change passwd for root - don't forget to document in lastpass - rootmessages passwd MUST not be empty"
+	passwd root
+done
 
 echo " "
 echo "setup done. ready to reboot ..."
