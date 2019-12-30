@@ -188,6 +188,7 @@ while [ "$passwd_rootmessages" != "P" ]
 do
 	echo "change passwd for rootmessages - don't forget to document in lastpass - rootmessages passwd MUST not be empty"
 	passwd rootmessages
+	passwd_rootmessages=$(passwd -S rootmessages | cut -d ' ' -f 2)
 done
 
 #check if root initial passwd has to be changed
@@ -202,6 +203,7 @@ while [ "$passwd_root" != "P" ]
 do
 	echo "root paaswd empty!!!! -change passwd for root - don't forget to document in lastpass - rootmessages passwd MUST not be empty"
 	passwd root
+	passwd_root=$(passwd -S root | cut -d ' ' -f 2)
 done
 
 echo " "
