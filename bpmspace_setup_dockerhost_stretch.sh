@@ -178,11 +178,18 @@ echo "rootmessages   ALL=(ALL)  NOPASSWD: ALL" >> /etc/sudoers
 chown -R rootmessages:rootmessages /home/rootmessages
 chmod 700 /home/rootmessages/.ssh
 
-set +e
+systemctl enable docker
+
+set +e # do NOT stop execution of this script when an error occurs
 echo " "
-echo "change passwd for rootmessages - dont forget to document in lastpass"
-passwd rootmessages
-echo "change passwd for root - dont forget to document in lastpass"
+
+while [ "passwd -S rootmessages | cut -d ' ' -f 2" != "P" ]
+do
+	echo "change passwd for rootmessages - dont forget to document in lastpass - rootmessages passwd MUST not be empty"
+	passwd rootmessages
+done
+
+echo "change passwd for root - dont forget to document in lastpass - CTRL-C to interrupt - root passwd MUST not be empty"
 passwd root
 
 echo " "
