@@ -35,7 +35,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	1) sudo rm /root/bpmspace_setup_dockerhost_stretch.sh 
 	2) cd /home/rootmessages
 	3) chmod +x ./BPMspaceCloud/dockerswarm/scripts/setup.sh
-	3) sudo ./BPMspaceCloud/dockerswarm/scripts/setup.sh <IP@-MASTER>
+	4) sudo ./BPMspaceCloud/dockerswarm/scripts/setup.sh <IP@-MASTER>
 	
 ### II) ON docker_node_001 AND docker_node_002
 	1) sudo rm /root/bpmspace_setup_dockerhost_stretch.s
@@ -51,7 +51,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	2) TEST Swarm 
 		docker node ls
 		Output should look like
-			ID							HOSTNAME						STATUS	AVAILABILITY	MANAGER STATUS	ENGINE VERSION
+			ID							HOSTNAME				STATUS	AVAILABILITY	MANAGER STATUS	ENGINE VERSION
 			5ufqco634dq43usqulgnfvkb *	docker_master_001.bpmspace.net	Ready	Active			Leader			19.03.5
 			vmk88y5o17q654b6az8l9p8x	docker_node_001.bpmspace.net	Ready	Active							19.03.5
 			in0o2qh9iv8342ggzxcxiw15	docker_node_002.bpmspace.net	Ready	Active							19.03.5
