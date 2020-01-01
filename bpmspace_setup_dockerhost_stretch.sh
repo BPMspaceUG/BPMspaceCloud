@@ -35,24 +35,9 @@ HOST=$2
 
 usage () {
 
-  echo "$0 <LIVE|NOT_LIVE> <hostname>"
-  echo "example: $0 NOT_LIVE smaug.einoede.org"
+  echo "$0 <MASTER|WORKER> <hostname>"
+  echo "example: $0 WORKER smaug.einoede.org"
 
-}
-
-countdown() {
-        msg="Ready for REBOOT? press CTRL-C to stop"
-        clear
-        tput cup $row $col
-        echo -n "$msg"
-        l=${#msg}
-        l=$(( l+$col ))
-        for i in {5..1}
-        do
-                tput cup $row $l
-                echo -n "$i"
-                sleep 1
-        done
 }
 
 if [ $# -ne 2 ];then
@@ -63,7 +48,7 @@ if [ $# -ne 2 ];then
 fi
 
 echo "Check if the script runs for the first time ...";
-if [ "$DOCKER_ENV_BPMSPACE" = "LIVE" ] ||  [ "$DOCKER_ENV_BPMSPACE" = "NOT_LIVE" ]; then 
+if [ "$DOCKER_SWARM_TYPE" = "MASTER" ] ||  [ "$DOCKER_SWARM_TYPE" = "WORKER" ]; then 
 	FIRSTTIME="FALSE"
 else
 	FIRSTTIME="TRUE"
@@ -71,13 +56,13 @@ fi
 
 if [ "$FIRSTTIME" = "TRUE" ]; then 
 	echo "Scipt runs for the first time";
-	echo "DOCKER_ENV_BPMSPACE=$1" >> /etc/environment
+	echo "DOCKER_SWARM_TYPE=$1" >> /etc/environment
 else
  echo "SCRIPT was running at least once ... check something else";
- if [ "$DOCKER_ENV_BPMSPACE" == "$ENV" ]; then
-	echo "Existing environment $DOCKER_ENV_BPMSPACE and requested $ENV environment are identical, we can go on ....";
+ if [ "$DOCKER_SWARM_TYPE" == "$ENV" ]; then
+	echo "Existing environment $DOCKER_SWARM_TYPE and requested $ENV environment are identical, we can go on ....";
 	else
-	echo "You are triying to install a $ENV environment to an existing $DOCKER_ENV_BPMSPACE environment DANGER! DANGER! DANGER! Over and Out"
+	echo "You are triying to install a $ENV environment to an existing $DOCKER_SWARM_TYPE environment DANGER! DANGER! DANGER! Over and Out"
 	exit 1;
  fi
 fi
