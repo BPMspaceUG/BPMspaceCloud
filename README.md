@@ -3,19 +3,19 @@
 ## DockerHosts Initial Setup
 
 ### for setup the 1st Master 
-> * wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
-> * chmod +x bpmspace_setup_dockerhost_stretch.sh
-> * ./bpmspace_setup_dockerhost_stretch.sh MASTER docker_master_001.bpmspace.net
+>wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
+>chmod +x bpmspace_setup_dockerhost_stretch.sh
+>./bpmspace_setup_dockerhost_stretch.sh MASTER docker_master_001.bpmspace.net
 
 ### for setup the 1st NODE (WORKER) 
-> * wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
-> * chmod +x bpmspace_setup_dockerhost_stretch.sh
-> * ./bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_001.bpmspace.net
+>wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
+>chmod +x bpmspace_setup_dockerhost_stretch.sh
+>./bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_001.bpmspace.net
 
 ### for setup the 2nd NODE (WORKER) 
-> * wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
-> * chmod +x bpmspace_setup_dockerhost_stretch.sh
-> * ./bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_002.bpmspace.net
+>wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
+>chmod +x bpmspace_setup_dockerhost_stretch.sh
+>./bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_002.bpmspace.net
 
 ## DockerSwarm Initial Setup
 
