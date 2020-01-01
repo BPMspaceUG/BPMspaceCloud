@@ -53,7 +53,7 @@ echo "========================================================================="
 docker swarm init --advertise-addr $1
 
 
-echo " adding default overlay network 'imixs-cloud-net' ...."
+echo " adding default overlay network 'cloud-net' ...."
 docker network create --driver=overlay --attachable cloud-net
-echo " adding overlay network 'imixs-proxy-net' ...."
+echo " adding overlay network 'proxy-net' ...."
 docker network create --driver=overlay --attachable proxy-net
