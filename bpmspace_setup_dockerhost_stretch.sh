@@ -85,12 +85,10 @@ id -u rootmessages &>/dev/null || adduser rootmessages sudo
 cd /home/rootmessages
 if [ "$FIRSTTIME" = "TRUE" ]; then
 	echo "let's clone the BPMspaceUG GIT repo since it is the first time the script is running"
-	git clone https://github.com/BPMspaceUG/linux_config_script_files_II.git
-	git clone https://github.com/BPMspaceUG/bpmspace_docker2.git;
+	git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
 else
 	echo "let's pull the BPMspaceUG GIT repo since it is NOT the first time the script is running"
-	git -C /home/rootmessages/linux_config_script_files_II/ pull
-	git -C /home/rootmessages/bpmspace_docker2/ pull;
+	git -C https://github.com/BPMspaceUG/BPMspaceCloud.git pull
 fi
 
 echo "let's set hostname to $HOST"
@@ -101,9 +99,9 @@ apt update > /dev/null 2>&1
 
 echo " "
 echo "SET SSH PORT to 7070"
-cp /home/rootmessages/linux_config_script_files_II/dockerhost/daemon/sshd/sshd_config /etc/ssh/
+cp /home/rootmessages/BPMspaceCloud/dockerhost/daemon/sshd/sshd_config /etc/ssh/
 mkdir -p /home/rootmessages/.ssh
-cp /home/rootmessages/linux_config_script_files_II/dockerhost/authorized_keys/authorized_keys /home/rootmessages/.ssh
+cp /home/rootmessages/BPMspaceCloud/dockerhost/authorized_keys/authorized_keys /home/rootmessages/.ssh
 
 # Firewall stuff
 echo "adding iptables script to /etc/rc.local"
@@ -116,7 +114,7 @@ echo "/opt/iptables.sh" >>/etc/rc.local
 echo "exit 0" >> /etc/rc.local
 
 # copy iptables.sh /opt
-cp /home/rootmessages/linux_config_script_files_II/dockerhost/iptables/iptables.sh /opt
+cp /home/rootmessages/BPMspaceCloud/dockerhost/iptables/iptables.sh /opt
 chmod u+x /opt/iptables.sh
 chmod u+x /etc/rc.local
 
