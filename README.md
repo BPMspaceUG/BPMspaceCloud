@@ -31,17 +31,17 @@ _Imixs-Cloud_ is an open infrastructure project, providing a lightweight [docker
 The _Imixs-Cloud_ is based on a [docker swarm](https://docs.docker.com/engine/swarm/) cluster environment.
 Docker swarm is much easier to setup and in its management compared to a Kubernetes cluster. However, when deciding which platform  to use, you should consider your own criterias. _Imixs-Cloud_ is optimized to **build**, **run** and **maintain** business services in small and medium-sized enterprises.
 
-### I - ON docker_master_001 -login as rootmessages
+### I - ssh to docker_master_001 - login as rootmessages
 	1) sudo rm /root/bpmspace_setup_dockerhost_stretch.sh 
 	2) cd /home/rootmessages
 	3) chmod +x ./BPMspaceCloud/dockerswarm/scripts/setup.sh
 	4) sudo ./BPMspaceCloud/dockerswarm/scripts/setup.sh <IP@-MASTER>
 	
-### II - ON docker_node_001 AND docker_node_002
+### II - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
 	1) sudo rm /root/bpmspace_setup_dockerhost_stretch.s
 	2) docker swarm join --token <TOKEN FROM STEP I-4>  <IP@-MASTER>:2377
 	
-### III - ON docker_master_001 -login as rootmessages
+### III - ssh to docker_master_001 - login as rootmessages
 	1)TEST network
 		docker network ls | grep overlay
 		Output should look like
