@@ -1,0 +1,38 @@
+version: '3.3'
+
+networks:
+ proxy-net:
+   external: true
+      
+services:
+    reverse-proxy:
+     image: traefik:latest
+     command:
+      --providers.docker
+      --providers.docker.exposedbydefault=false
+      --providers.docker.swarmmode=true
+      --entryPoints.http.address=":80"
+      --accesslog
+      --log.level=DEBUG
+      --api=true
+      --api.dashboard=true
+     ports:
+       - 80:80
+       - 8080:8080
+     volumes:
+       - /var/run/docker.sock:/var/run/docker.sock
+     deploy:
+        mode: global
+        placement:
+          constraints:
+            - node.role == manager
+        labels:
+          - traefik.enable=true
+          - traefik.http.services.justAdummyService.loadbalancer.server.port=1337
+          - traefik.http.routers.traefikRouter.rule=Host(`traefik.bpmspace.net`)
+          - traefik.http.routers.traefikRouter.service=api@internal
+          - traefik.http.routers.traefikRouter.entrypoints=http
+     networks:
+       - proxy-net
+
+
