@@ -39,12 +39,12 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	
 ### II) ON docker_node_001 AND docker_node_002
 	1) sudo rm /root/bpmspace_setup_dockerhost_stretch.s
-	2) docker swarm join --token <TOKEN FROM STEP I-4>  51.75.69.192:2377
+	2) docker swarm join --token <TOKEN FROM STEP I-4>  <IP@-MASTER>:2377
 	
 ### III) ON docker_master_001 -login as rootmessages
 	1)TEST network
 		docker network ls | grep overlay
 		Output should look like
-			1q17d4dn5z6r| cloud-net | overlay |swarm
-			saprq830v4fb| ingress | overlay| swarm
-			dzptcxt9kk30| proxy-net | overlay | swarm
+			1q17asdn5z6r	cloud-net	overlay		swarm
+			sadfq830v4fb	ingress		overlay		swarm
+			dzptc459kk30	proxy-net	overlay		swarm
