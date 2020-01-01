@@ -60,7 +60,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 		(see https://github.com/portainer/portainer/issues/2816)
 	4) sudo docker stack deploy -c ./imixs-cloud/management/portainer/docker-compose.yml Portainer
 	5) DOCKER SECRET NOT WORKING AT THE MOMENT WITH PORTAINER - so set passwd for user admin at first start
-	6) The Stack has do be added again. only portainer can be fully controlde by Portainer
+	6) The Stack "Portainer" has do be added a second time. Only then portainer can be fully controlde by Portainer.
 ![Portainer](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_Portainer.png "Portainer")
 
 	
