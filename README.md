@@ -3,7 +3,10 @@
 ## DockerHosts Initial Setup
 
 ### Prerequisites
-3 Linux server with DEBIAN 9 (Stretch)
+Linux server with DEBIAN 9 (Stretch) and ssh access and named:
+- docker_master_001.bpmspace.net
+- docker_node_001.bpmspace.net
+- docker_node_002.bpmspace.net
 
 ### for setup the 1st Master 
 >wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
@@ -33,3 +36,15 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	2) cd /home/rootmessages
 	3) chmod +x ./BPMspaceCloud/dockerswarm/scripts/setup.sh
 	3) sudo ./BPMspaceCloud/dockerswarm/scripts/setup.sh <IP@-MASTER>
+	
+### II) ON docker_node_001 AND docker_node_002
+	1) sudo rm /root/bpmspace_setup_dockerhost_stretch.s
+	2) docker swarm join --token <TOKEN FROM STEP I-4>  51.75.69.192:2377
+	
+### III) ON docker_master_001 -login as rootmessages
+	1)TEST network
+		docker network ls | grep overlay
+		Output should look like
+			1q17d4dn5z6r| cloud-net | overlay |swarm
+			saprq830v4fb| ingress | overlay| swarm
+			dzptcxt9kk30| proxy-net | overlay | swarm
