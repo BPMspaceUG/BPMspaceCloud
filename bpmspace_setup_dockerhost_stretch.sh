@@ -47,6 +47,10 @@ if [ $# -ne 2 ];then
 
 fi
 
+#ToDO Check if $1 is MASTER or WORKER if not usage
+#ToDO Check if $2 is has the structur of an fully qualified domain name (FQDN) e.g. myhost.example.com if not usage
+#ToDO Check if $DOCKER_SWARM_TYPE exists and is set to MASTER or WORKER if not error "$DOCKER_SWARM_TYPE in /etc/environment not set correctly"
+
 echo "Check if the script runs for the first time ...";
 if [ "$DOCKER_SWARM_TYPE" = "MASTER" ] ||  [ "$DOCKER_SWARM_TYPE" = "WORKER" ]; then 
 	FIRSTTIME="FALSE"
@@ -88,8 +92,10 @@ if [ "$FIRSTTIME" = "TRUE" ]; then
 	git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
 else
 	echo "let's pull the BPMspaceUG GIT repo since it is NOT the first time the script is running"
-	git -C https://github.com/BPMspaceUG/BPMspaceCloud.git pull
-fi
+	cd BPMspaceCloud
+	git pull
+	cd /home/rootmessages
+fi 
 
 echo "let's set hostname to $HOST"
 echo $HOST > /etc/hostname

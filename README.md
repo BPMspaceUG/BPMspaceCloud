@@ -2,6 +2,9 @@
 
 ## DockerHosts Initial Setup
 
+### Prerequisites
+3 Linux server with DEBIAN 9 (Stretch)
+
 ### for setup the 1st Master 
 >wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
 >chmod +x bpmspace_setup_dockerhost_stretch.sh
