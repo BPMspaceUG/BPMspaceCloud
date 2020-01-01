@@ -45,7 +45,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	1)TEST network
 		docker network ls | grep overlay
 		Output should look like
-			NETWORK ID	NAME	DRIVER	SCOPE
+			NETWORK ID	NAME		DRIVER	SCOPE
 			1q17asdn5z6r	cloud-net	overlay		swarm
 			sadfq830v4fb	ingress		overlay		swarm
 			dzptc459kk30	proxy-net	overlay		swarm
