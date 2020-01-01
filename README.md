@@ -48,3 +48,11 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 			1q17asdn5z6r	cloud-net	overlay		swarm
 			sadfq830v4fb	ingress		overlay		swarm
 			dzptc459kk30	proxy-net	overlay		swarm
+	2) TEST Swarm 
+		docker node ls
+		Output should look like
+			ID							HOSTNAME						STATUS	AVAILABILITY	MANAGER STATUS	ENGINE VERSION
+			5ufqco634dq43usqulgnfvkb *	docker_master_001.bpmspace.net	Ready	Active			Leader			19.03.5
+			vmk88y5o17q654b6az8l9p8x	docker_node_001.bpmspace.net	Ready	Active							19.03.5
+			in0o2qh9iv8342ggzxcxiw15	docker_node_002.bpmspace.net	Ready	Active							19.03.5
+
