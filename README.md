@@ -61,4 +61,4 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	
 
 ### IV - setup TraefikReverseProxy
-![TraefikReverseProxy](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "TraefikReverseProxy")
+![TraefikReverseProxy](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_TraefikReverseProxy.png "TraefikReverseProxy")
