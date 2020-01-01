@@ -31,17 +31,17 @@ _Imixs-Cloud_ is an open infrastructure project, providing a lightweight [docker
 The _Imixs-Cloud_ is based on a [docker swarm](https://docs.docker.com/engine/swarm/) cluster environment.
 Docker swarm is much easier to setup and in its management compared to a Kubernetes cluster. However, when deciding which platform  to use, you should consider your own criterias. _Imixs-Cloud_ is optimized to **build**, **run** and **maintain** business services in small and medium-sized enterprises.
 
-### I - ssh to docker_master_001 - login as rootmessages
+### STEP I - ssh to docker_master_001 - login as rootmessages
 	1) sudo rm /root/bpmspace_setup_dockerhost_stretch.sh 
 	2) cd /home/rootmessages
 	3) chmod +x ./BPMspaceCloud/dockerswarm/scripts/setup.sh
 	4) sudo ./BPMspaceCloud/dockerswarm/scripts/setup.sh <IP@-MASTER>
 	
-### II - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
+### STEP II - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
 	1) sudo rm /root/bpmspace_setup_dockerhost_stretch.s
 	2) docker swarm join --token <TOKEN FROM STEP I-4>  <IP@-MASTER>:2377
 	
-### III - ssh to docker_master_001 - login as rootmessages
+### STEP III - ssh to docker_master_001 - login as rootmessages
 	1)TEST network
 		docker network ls | grep overlay
 		Output should look like
@@ -61,10 +61,10 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	4) sudo docker stack deploy -c ./imixs-cloud/management/portainer/docker-compose.yml Portainer
 	5) DOCKER SECRET NOT WORKING AT THE MOMENT WITH PORTAINER - so set passwd for user admin after the first start
 	6) The Stack "Portainer" has do be added a second time. Only then portainer can be fully controlde by Portainer.
-		open in Browser - http:/bpmspace.net:8200
+	open in Browser - http:/bpmspace.net:8200
 		
 ![Portainer](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_Portainer.png "Portainer")
 
 	
-### IV - setup TraefikReverseProxy
+### STEP IV - setup TraefikReverseProxy
 ![TraefikReverseProxy](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_TraefikReverseProxy.png "TraefikReverseProxy")
