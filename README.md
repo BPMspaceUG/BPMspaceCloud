@@ -8,17 +8,17 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 - docker_node_001.bpmspace.net
 - docker_node_002.bpmspace.net
 
-### for setup the 1st Master 
+### ssh to docker_master_001 - login as root 
 >wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
 >chmod +x bpmspace_setup_dockerhost_stretch.sh
 >./bpmspace_setup_dockerhost_stretch.sh MASTER docker_master_001.bpmspace.net
 
-### for setup the 1st NODE (WORKER) 
+### ssh to docker_node_001 (WORKER) - login as root
 >wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
 >chmod +x bpmspace_setup_dockerhost_stretch.sh
 >./bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_001.bpmspace.net
 
-### for setup the 2nd NODE (WORKER) 
+### ssh to docker_node_002 (WORKER) - login as root
 >wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
 >chmod +x bpmspace_setup_dockerhost_stretch.sh
 >./bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_002.bpmspace.net
@@ -62,7 +62,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	5) DOCKER SECRET NOT WORKING AT THE MOMENT WITH PORTAINER - so set passwd for user admin after the first start
 
 ### STEP IV - setup Portainer in Portainer http:/bpmspace.net:8888
-	NOTE: The Stack "Portainer" has do be added a second time. Only then portainer can be fully controlde by Portainer.
+	- ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `#f03c15`NOTE: The Stack "Portainer" has do be added a second time. Only then portainer can be fully controlde by Portainer.
 	Name:	Portainer
 	Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/
 	Compose path: /dockerswarm/management/portainer/
@@ -76,3 +76,8 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	Compose path: /dockerswarm/management/traefik/
 
 ![TraefikReverseProxy](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_TraefikReverseProxy.png "TraefikReverseProxy")
+
+### STEP VI - setup WHOIS && Test in http:/bpmspace.net:8888
+	Name:	TraefikReverseProxy
+	Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/
+	Compose path: /dockerswarm/management/traefik/
