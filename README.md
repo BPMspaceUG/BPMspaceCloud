@@ -60,11 +60,19 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 		(see https://github.com/portainer/portainer/issues/2816)
 	4) sudo docker stack deploy -c ./imixs-cloud/management/portainer/docker-compose.yml Portainer
 	5) DOCKER SECRET NOT WORKING AT THE MOMENT WITH PORTAINER - so set passwd for user admin after the first start
-	6) The Stack "Portainer" has do be added a second time. Only then portainer can be fully controlde by Portainer.
-	open in Browser - http:/bpmspace.net:8200
-		
+
+### STEP IV - setup Portainer in Portainer http:/bpmspace.net:8888
+	NOTE: The Stack "Portainer" has do be added a second time. Only then portainer can be fully controlde by Portainer.
+	Name:	Portainer
+	Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/
+	Compose path: /dockerswarm/management/portainer/
+	
 ![Portainer](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_Portainer.png "Portainer")
 
 	
-### STEP IV - setup TraefikReverseProxy
+### STEP V - setup TraefikReverseProxy in http:/bpmspace.net:8888
+	Name:	TraefikReverseProxy
+	Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/
+	Compose path: /dockerswarm/management/traefik/
+
 ![TraefikReverseProxy](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_TraefikReverseProxy.png "TraefikReverseProxy")
