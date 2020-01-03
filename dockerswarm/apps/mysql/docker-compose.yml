@@ -1,0 +1,106 @@
+version: '3.6'
+
+networks:
+ proxy-net:
+   external: true
+   
+services:
+
+  mariadb10:
+    image: mariadb:10.4.8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+    - ./mariadb10:/var/lib/mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=test
+    - MYSQL_DATABASE=test
+    - MYSQL_USER=test
+    - MYSQL_PASSWORD=test
+    networks:
+      - proxy-net 
+
+  mysql5:
+    image: mysql:5.7.24
+    restart: always
+    volumes:
+    - ./mysql5:/var/lib/mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=test
+    - MYSQL_DATABASE=test
+    - MYSQL_USER=test
+    - MYSQL_PASSWORD=test
+    networks:
+      - proxy-net 
+
+
+  mysql8:
+    image: mysql:8.0.18
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+    - ./mysql8:/var/lib/mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=test
+    - MYSQL_DATABASE=test
+    - MYSQL_USER=test
+    - MYSQL_PASSWORD=test
+    networks:
+      - proxy-net 
+
+
+  phpmyadmin-mariadb:
+    image: phpmyadmin/phpmyadmin:4.8.5
+    restart: always
+    depends_on:
+    - mariadb10
+    environment:
+    - PMA_HOST=mariadb10
+    - PMA_PORT=3306
+    - PMA_USER=test
+    - PMA_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.phpmyadmin_mariadb10.rule=Host(`phpmyadmin_mariadb10.bpmspace.net`)
+        - traefik.http.services.phpmyadmin_mariadb10-service.loadbalancer.server.port=80
+    networks:
+      - proxy-net 
+
+  phpmyadmin-mysql5:
+    image: phpmyadmin/phpmyadmin:4.8.5
+    restart: always
+    depends_on:
+    - mysql5
+    environment:
+    - PMA_HOST=mysql5
+    - PMA_PORT=3306
+    - PMA_USER=test
+    - PMA_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.phpmyadmin_mysql5.rule=Host(`phpmyadmin_mysql5.bpmspace.net`)
+        - traefik.http.services.phpmyadmin_mysql5-service.loadbalancer.server.port=80
+    networks:
+      - proxy-net 
+
+  phpmyadmin-mysql8:
+    image: phpmyadmin/phpmyadmin:4.8.5
+    restart: always
+    depends_on:
+    - mysql8
+    environment:
+    - PMA_HOST=mysql8
+    - PMA_PORT=3306
+    - PMA_USER=test
+    - PMA_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.phpmyadmin_mysql8.rule=Host(`phpmyadmin_mysql8.bpmspace.net`)
+        - traefik.http.services.phpmyadmin_mysql8-service.loadbalancer.server.port=80
+    networks:
+      - proxy-net 
+
+# credits to https://github.com/boldt/docker-compose-mariadb-mysql-phpmyadmin
