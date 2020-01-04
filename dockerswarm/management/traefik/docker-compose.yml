@@ -12,6 +12,7 @@ services:
       --providers.docker.exposedbydefault=false
       --providers.docker.swarmmode=true
       --entryPoints.http.address=":80"
+      --entrypoints.mysql.address=":3306"
       --accesslog
       --log.level=DEBUG
       --api=true
