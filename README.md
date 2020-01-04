@@ -85,8 +85,8 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 
 > Name:	TEST_WHOIS  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
-> Compose path: /dockerswarm/apps/test/whoami/
-> TEST: http://whoami.bpmspace.net/
+> Compose path: /dockerswarm/apps/test/whoami/  
+> TEST: http://whoami.bpmspace.net/  
 
 
 
@@ -101,6 +101,6 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > Name:	TEST_mariadb-mysql-phpmyadmin  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/apps/test/mariadb-mysql-phpmyadmin/  
-> TEST: http://phpmyadmin_mariadb10.bpmspace.net/
-> TEST: http://phpmyadmin_mysql5.bpmspace.net/
-> TEST: http://phpmyadmin_mysql8.bpmspace.net/
+> TEST: http://phpmyadmin_mariadb10.bpmspace.net/  
+> TEST: http://phpmyadmin_mysql5.bpmspace.net/  
+> TEST: http://phpmyadmin_mysql8.bpmspace.net/  
