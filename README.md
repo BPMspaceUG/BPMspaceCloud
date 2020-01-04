@@ -93,6 +93,11 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 
 ### STEP VII - setup mariadb-mysql-phpmyadmin && Test in [Portainer Management Console](http:/bpmspace.net:8880)
 
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `NOTE:`Check Volumes First!
+
+![SETUP Volumes](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_VOLUMES_mariadb-mysql-phpmyadmin_TEST.png "SETUP Volumes")
+
+
 > Name:	TEST_mariadb-mysql-phpmyadmin  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/apps/test/mariadb-mysql-phpmyadmin/  
