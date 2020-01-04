@@ -19,6 +19,11 @@ services:
     - MYSQL_DATABASE=test
     - MYSQL_USER=test
     - MYSQL_PASSWORD=test
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role==worker]
     networks:
       - proxy-net 
 
@@ -33,6 +38,11 @@ services:
     - MYSQL_DATABASE=test
     - MYSQL_USER=test
     - MYSQL_PASSWORD=test
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role==worker]
     networks:
       - proxy-net 
 
@@ -49,6 +59,11 @@ services:
     - MYSQL_DATABASE=test
     - MYSQL_USER=test
     - MYSQL_PASSWORD=test
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role==worker]
     networks:
       - proxy-net 
 
@@ -69,6 +84,10 @@ services:
         - traefik.enable=true
         - traefik.http.routers.phpmyadmin_mariadb10.rule=Host(`test_phpmyadmin_mariadb10.bpmspace.net`)
         - traefik.http.services.phpmyadmin_mariadb10-service.loadbalancer.server.port=80
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role==worker]
     networks:
       - proxy-net 
 
@@ -88,8 +107,12 @@ services:
         - traefik.enable=true
         - traefik.http.routers.phpmyadmin_mysql5.rule=Host(`test_phpmyadmin_mysql5.bpmspace.net`)
         - traefik.http.services.phpmyadmin_mysql5-service.loadbalancer.server.port=80
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role==worker]
     networks:
-      - proxy-net 
+     - proxy-net 
 
   TEST_phpmyadmin-mysql8:
     image: phpmyadmin/phpmyadmin:4.8.5
@@ -107,6 +130,10 @@ services:
         - traefik.enable=true
         - traefik.http.routers.phpmyadmin_mysql8.rule=Host(`test_phpmyadmin_mysql8.bpmspace.net`)
         - traefik.http.services.phpmyadmin_mysql8-service.loadbalancer.server.port=80
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role==worker]
     networks:
       - proxy-net 
 
