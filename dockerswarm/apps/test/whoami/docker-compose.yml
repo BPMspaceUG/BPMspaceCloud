@@ -15,7 +15,7 @@ services:
         - traefik.http.routers.whoami.rule=Host(`test_whoami.bpmspace.net`)
         - traefik.http.services.whoami-service.loadbalancer.server.port=80
       mode: replicated
-      replicas: 1
+      replicas: 4
       placement:
         constraints: [node.role==worker]
     networks:

@@ -4,6 +4,11 @@ networks:
  proxy-net:
    external: true
    
+volumes:
+  TEST_mariadb10:
+  TEST_mysql5:
+  TEST_mysql8:
+  
 services:
 
   TEST_mariadb10:
@@ -11,7 +16,6 @@ services:
     container_name: TEST_mariadb10
     hostname: TEST_mariadb10
     command: --default-authentication-plugin=mysql_native_password
-    restart: always
     volumes:
     - TEST_mariadb10:/var/lib/mysql
     environment:
