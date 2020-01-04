@@ -1,5 +1,17 @@
 version: '3.7'
 
+secrets:
+  portainer-admin-pass:
+    external: true
+    
+networks:
+  agent_network:
+    driver: overlay
+    attachable: true
+
+volumes:
+  portainer_data:
+
 services:
   agent:
     image: portainer/agent
