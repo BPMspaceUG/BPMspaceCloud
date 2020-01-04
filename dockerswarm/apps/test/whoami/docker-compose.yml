@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.7'
 
 networks:
  proxy-net:
@@ -7,6 +7,8 @@ networks:
 services:
   whoami:
     image: containous/whoami
+    container_name: TEST_whoami
+    hostname: TEST_whoami
     deploy:
       labels:
         - traefik.enable=true

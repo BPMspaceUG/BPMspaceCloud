@@ -75,19 +75,27 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 
 > Name:	TraefikReverseProxy  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
-> Compose path: /dockerswarm/management/traefik/  
+> Compose path: /dockerswarm/management/traefik/
+> TEST: http://traefik.bpmspace.net/dashboard/#/
 
 
 ![TraefikReverseProxy](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_TraefikReverseProxy.png "TraefikReverseProxy")
 
 ### STEP VI - setup WHOIS && Test in [Portainer Management Console](http:/bpmspace.net:8880)
 
-> Name:	TraefikReverseProxy  
+> Name:	TEST_WHOIS  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
-> Compose path: /dockerswarm/apps/whoami/  
+> Compose path: /dockerswarm/apps/test/whoami/
+> TEST: http://whoami.bpmspace.net/
+
+
+
 
 ### STEP VII - setup mariadb-mysql-phpmyadmin && Test in [Portainer Management Console](http:/bpmspace.net:8880)
 
-> Name:	mariadb-mysql-phpmyadmin  
+> Name:	TEST_mariadb-mysql-phpmyadmin  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
-> Compose path: /dockerswarm/apps/mariadb-mysql-phpmyadmin/  
+> Compose path: /dockerswarm/apps/test/mariadb-mysql-phpmyadmin/  
+> TEST: http://phpmyadmin_mariadb10.bpmspace.net/
+> TEST: http://phpmyadmin_mysql5.bpmspace.net/
+> TEST: http://phpmyadmin_mysql8.bpmspace.net/

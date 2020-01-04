@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.7'
 
 networks:
  proxy-net:
@@ -6,12 +6,14 @@ networks:
    
 services:
 
-  mariadb10:
+  TEST_mariadb10:
     image: mariadb:10.4.8
+    container_name: TEST_mariadb10
+    hostname: TEST_mariadb10
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes:
-    - ./mariadb10:/var/lib/mysql
+    - /TEST_mariadb10:/var/lib/mysql
     environment:
     - MYSQL_ROOT_PASSWORD=test
     - MYSQL_DATABASE=test
@@ -20,11 +22,11 @@ services:
     networks:
       - proxy-net 
 
-  mysql5:
+  TEST_mysql5:
     image: mysql:5.7.24
-    restart: always
-    volumes:
-    - ./mysql5:/var/lib/mysql
+    container_name: TEST_mysql5
+    hostname: TEST_mysql5    volumes:
+    - /TEST_mysql5:/var/lib/mysql
     environment:
     - MYSQL_ROOT_PASSWORD=test
     - MYSQL_DATABASE=test
@@ -34,12 +36,13 @@ services:
       - proxy-net 
 
 
-  mysql8:
+  TEST_mysql8:
     image: mysql:8.0.18
     command: --default-authentication-plugin=mysql_native_password
-    restart: always
+    container_name: TEST_mysql8
+    hostname: TEST_mysql8
     volumes:
-    - ./mysql8:/var/lib/mysql
+    - /TEST_mysql8:/var/lib/mysql
     environment:
     - MYSQL_ROOT_PASSWORD=test
     - MYSQL_DATABASE=test
@@ -49,9 +52,10 @@ services:
       - proxy-net 
 
 
-  phpmyadmin-mariadb:
+  TEST_phpmyadmin-mariadb:
     image: phpmyadmin/phpmyadmin:4.8.5
-    restart: always
+    container_name: TEST_phpmyadmin_mariadb10
+    hostname: TEST_phpmyadmin_mariadb10
     depends_on:
     - mariadb10
     environment:
@@ -67,9 +71,10 @@ services:
     networks:
       - proxy-net 
 
-  phpmyadmin-mysql5:
+  TEST_phpmyadmin-mysql5:
     image: phpmyadmin/phpmyadmin:4.8.5
-    restart: always
+    container_name: TEST_phpmyadmin_mysql5
+    hostname: TEST_phpmyadmin_mysql5
     depends_on:
     - mysql5
     environment:
@@ -85,9 +90,10 @@ services:
     networks:
       - proxy-net 
 
-  phpmyadmin-mysql8:
+  TEST_phpmyadmin-mysql8:
     image: phpmyadmin/phpmyadmin:4.8.5
-    restart: always
+    container_name: TEST_phpmyadmin_mysql8
+    hostname: TEST_phpmyadmin_mysql8
     depends_on:
     - mysql8
     environment:
