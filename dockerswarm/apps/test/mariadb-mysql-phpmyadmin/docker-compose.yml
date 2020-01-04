@@ -13,7 +13,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes:
-    - /TEST_mariadb10:/var/lib/mysql
+    - TEST_mariadb10:/var/lib/mysql
     environment:
     - MYSQL_ROOT_PASSWORD=test
     - MYSQL_DATABASE=test
@@ -27,7 +27,7 @@ services:
     container_name: TEST_mysql5
     hostname: TEST_mysql5
     volumes:
-    - /TEST_mysql5:/var/lib/mysql
+    - TEST_mysql5:/var/lib/mysql
     environment:
     - MYSQL_ROOT_PASSWORD=test
     - MYSQL_DATABASE=test
@@ -43,7 +43,7 @@ services:
     container_name: TEST_mysql8
     hostname: TEST_mysql8
     volumes:
-    - /TEST_mysql8:/var/lib/mysql
+    - TEST_mysql8:/var/lib/mysql
     environment:
     - MYSQL_ROOT_PASSWORD=test
     - MYSQL_DATABASE=test
