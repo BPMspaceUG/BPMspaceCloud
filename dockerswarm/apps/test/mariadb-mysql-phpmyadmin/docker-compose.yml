@@ -26,9 +26,9 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - "traefik.tcp.routers.TEST_mariadb10.rule=Host(`TEST_mariadb10.bpmspace.net`)"
-        - "traefik.tcp.routers.TEST_mariadb10.entrypoints=mysql"
-        - "traefik.tcp.services.TEST_mariadb10.LoadBalancer.server.Port=3306"
+        - traefik.tcp.routers.TEST_mariadb10.rule=Host(`TEST_mariadb10.bpmspace.net`)
+        - traefik.tcp.routers.TEST_mariadb10.entrypoints=mysql"
+        - traefik.tcp.services.TEST_mariadb10-service.LoadBalancer.server.Port=3306
     networks:
       - proxy-net 
 
