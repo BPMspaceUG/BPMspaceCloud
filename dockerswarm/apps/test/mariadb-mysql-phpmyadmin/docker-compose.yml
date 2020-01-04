@@ -67,7 +67,7 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.phpmyadmin_mariadb10.rule=Host(`phpmyadmin_mariadb10.bpmspace.net`)
+        - traefik.http.routers.phpmyadmin_mariadb10.rule=Host(`test_phpmyadmin_mariadb10.bpmspace.net`)
         - traefik.http.services.phpmyadmin_mariadb10-service.loadbalancer.server.port=80
     networks:
       - proxy-net 
@@ -86,7 +86,7 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.phpmyadmin_mysql5.rule=Host(`phpmyadmin_mysql5.bpmspace.net`)
+        - traefik.http.routers.phpmyadmin_mysql5.rule=Host(`test_phpmyadmin_mysql5.bpmspace.net`)
         - traefik.http.services.phpmyadmin_mysql5-service.loadbalancer.server.port=80
     networks:
       - proxy-net 
@@ -105,7 +105,7 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.phpmyadmin_mysql8.rule=Host(`phpmyadmin_mysql8.bpmspace.net`)
+        - traefik.http.routers.phpmyadmin_mysql8.rule=Host(`test_phpmyadmin_mysql8.bpmspace.net`)
         - traefik.http.services.phpmyadmin_mysql8-service.loadbalancer.server.port=80
     networks:
       - proxy-net 
