@@ -25,7 +25,8 @@ services:
   TEST_mysql5:
     image: mysql:5.7.24
     container_name: TEST_mysql5
-    hostname: TEST_mysql5    volumes:
+    hostname: TEST_mysql5
+    volumes:
     - /TEST_mysql5:/var/lib/mysql
     environment:
     - MYSQL_ROOT_PASSWORD=test
