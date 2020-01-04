@@ -51,9 +51,7 @@ services:
         constraints: [node.role==worker]
     networks:
       - proxy-net 
-    links:
-      - TEST_mariadb10
-
+      
    TEST_mysql5:
     image: mysql:5.7.24
     hostname: TEST_mysql5
@@ -93,8 +91,7 @@ services:
         constraints: [node.role==worker]
     networks:
      - proxy-net
-    links:
-      - TEST_mysql5
+
 
   TEST_mysql8:
     image: mysql:8.0.18
@@ -137,7 +134,6 @@ services:
         constraints: [node.role==worker]
     networks:
       - proxy-net
-    links:
-      - TEST_mysql8
+
 
 # credits to https://github.com/boldt/docker-compose-mariadb-mysql-phpmyadmin
