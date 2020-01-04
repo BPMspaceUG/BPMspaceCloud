@@ -13,7 +13,6 @@ services:
 
   TEST_mariadb10:
     image: mariadb:10.4.8
-    container_name: TEST_mariadb10
     hostname: TEST_mariadb10
     command: --default-authentication-plugin=mysql_native_password
     volumes:
@@ -31,9 +30,32 @@ services:
     networks:
       - proxy-net 
 
-  TEST_mysql5:
+  TEST_phpmyadmin-mariadb:
+    image: phpmyadmin/phpmyadmin:4.8.5
+    hostname: TEST_phpmyadmin_mariadb10
+    depends_on:
+    - mariadb10
+    environment:
+    - PMA_HOST=TEST_mariadb10
+    - PMA_PORT=3306
+    - PMA_USER=test
+    - PMA_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.phpmyadmin_mariadb10.rule=Host(`test_phpmyadmin_mariadb10.bpmspace.net`)
+        - traefik.http.services.phpmyadmin_mariadb10-service.loadbalancer.server.port=80
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role==worker]
+    networks:
+      - proxy-net 
+    links:
+      - TEST_mariadb10
+
+   TEST_mysql5:
     image: mysql:5.7.24
-    container_name: TEST_mysql5
     hostname: TEST_mysql5
     volumes:
     - TEST_mysql5:/var/lib/mysql
@@ -50,11 +72,33 @@ services:
     networks:
       - proxy-net 
 
+  TEST_phpmyadmin-mysql5:
+    image: phpmyadmin/phpmyadmin:4.8.5
+    hostname: TEST_phpmyadmin_mysql5
+    depends_on:
+    - mysql5
+    environment:
+    - PMA_HOST=TEST_mysql5
+    - PMA_PORT=3306
+    - PMA_USER=test
+    - PMA_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.phpmyadmin_mysql5.rule=Host(`test_phpmyadmin_mysql5.bpmspace.net`)
+        - traefik.http.services.phpmyadmin_mysql5-service.loadbalancer.server.port=80
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role==worker]
+    networks:
+     - proxy-net
+    links:
+      - TEST_mysql5
 
   TEST_mysql8:
     image: mysql:8.0.18
     command: --default-authentication-plugin=mysql_native_password
-    container_name: TEST_mysql8
     hostname: TEST_mysql8
     volumes:
     - TEST_mysql8:/var/lib/mysql
@@ -72,60 +116,13 @@ services:
       - proxy-net 
 
 
-  TEST_phpmyadmin-mariadb:
-    image: phpmyadmin/phpmyadmin:4.8.5
-    container_name: TEST_phpmyadmin_mariadb10
-    hostname: TEST_phpmyadmin_mariadb10
-    depends_on:
-    - mariadb10
-    environment:
-    - PMA_HOST=mariadb10
-    - PMA_PORT=3306
-    - PMA_USER=test
-    - PMA_PASSWORD=test
-    deploy:
-      labels:
-        - traefik.enable=true
-        - traefik.http.routers.phpmyadmin_mariadb10.rule=Host(`test_phpmyadmin_mariadb10.bpmspace.net`)
-        - traefik.http.services.phpmyadmin_mariadb10-service.loadbalancer.server.port=80
-      mode: replicated
-      replicas: 1
-      placement:
-        constraints: [node.role==worker]
-    networks:
-      - proxy-net 
-
-  TEST_phpmyadmin-mysql5:
-    image: phpmyadmin/phpmyadmin:4.8.5
-    container_name: TEST_phpmyadmin_mysql5
-    hostname: TEST_phpmyadmin_mysql5
-    depends_on:
-    - mysql5
-    environment:
-    - PMA_HOST=mysql5
-    - PMA_PORT=3306
-    - PMA_USER=test
-    - PMA_PASSWORD=test
-    deploy:
-      labels:
-        - traefik.enable=true
-        - traefik.http.routers.phpmyadmin_mysql5.rule=Host(`test_phpmyadmin_mysql5.bpmspace.net`)
-        - traefik.http.services.phpmyadmin_mysql5-service.loadbalancer.server.port=80
-      mode: replicated
-      replicas: 1
-      placement:
-        constraints: [node.role==worker]
-    networks:
-     - proxy-net 
-
   TEST_phpmyadmin-mysql8:
     image: phpmyadmin/phpmyadmin:4.8.5
-    container_name: TEST_phpmyadmin_mysql8
     hostname: TEST_phpmyadmin_mysql8
     depends_on:
     - mysql8
     environment:
-    - PMA_HOST=mysql8
+    - PMA_HOST=TEST_mysql8
     - PMA_PORT=3306
     - PMA_USER=test
     - PMA_PASSWORD=test
@@ -139,6 +136,8 @@ services:
       placement:
         constraints: [node.role==worker]
     networks:
-      - proxy-net 
+      - proxy-net
+    links:
+      - TEST_mysql8
 
 # credits to https://github.com/boldt/docker-compose-mariadb-mysql-phpmyadmin
