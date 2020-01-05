@@ -77,7 +77,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/management/traefik/
 > or via ssh sudo docker stack deploy -c BPMspaceCloud/dockerswarm/management/traefik/docker-compose.yml TraefikReverseProxy
-> TEST: http://traefik.bpmspace.net/dashboard/#/
+> TEST http://traefik.bpmspace.net/dashboard/#/
 
 
 ![TraefikReverseProxy](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_TraefikReverseProxy.png "TraefikReverseProxy")
@@ -86,9 +86,9 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 
 > Name:	TEST_WHOIS  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
-> Compose path: /dockerswarm/apps/test/whoami/   
+> Compose path: /dockerswarm/apps/test/whoami/  
 > or via ssh sudo docker stack deploy -c BPMspaceCloud/dockerswarm/apps/test/whoami/docker-compose.yml TEST_WHOIS
-> TEST: http://test_whoami.bpmspace.net/  
+> TEST http://test_whoami.bpmspace.net/  
 
 
 
@@ -100,19 +100,18 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 ![SETUP Volumes](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_VOLUMES_mariadb-mysql-phpmyadmin_TEST.png "SETUP Volumes")
 
 
-> Name:	TEST_mariadb-mysql-phpmyadmin   
-> Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/   
-> Compose path: /dockerswarm/apps/test/mariadb-mysql-phpmyadmin/   
+> Name:	TEST_mariadb-mysql-phpmyadmin  
+> Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
+> Compose path: /dockerswarm/apps/test/mariadb-mysql-phpmyadmin/  
 > or via ssh  sudo docker stack deploy -c BPMspaceCloud/dockerswarm/apps/test/mariadb-mysql-phpmyadmin/docker-compose.yml TEST_mariadb-mysql-phpmyadmin
-> TEST: http://test_phpmyadmin_mariadb10.bpmspace.net/   
-> TEST: http://test_phpmyadmin_mysql5.bpmspace.net/   
-> TEST: http://test_phpmyadmin_mysql8.bpmspace.net/   
+> TEST http://test_phpmyadmin_mariadb10.bpmspace.net/  
+> TEST http://test_phpmyadmin_mysql5.bpmspace.net/  
+> TEST http://test_phpmyadmin_mysql8.bpmspace.net/  
 
 
-> Name:	shell2http   
-> Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/   
-> Compose path: /dockerswarm/apps/shell2http/   
+> Name:	shell2http  
+> Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
+> Compose path: /dockerswarm/apps/shell2http/  
 > or via ssh  sudo docker stack deploy -c BPMspaceCloud/dockerswarm/apps/shell2http/docker-compose.yml shell2http
-> TEST: http://test_phpmyadmin_mariadb10.bpmspace.net/   
-> TEST: http://test_phpmyadmin_mysql5.bpmspace.net/   
-> TEST: http://test_phpmyadmin_mysql8.bpmspace.net/   
+> TEST http://shell2http_swarm_node.bpmspace.net/  
+> TEST http://shell2http_swarm_node.bpmspace.net/  
