@@ -34,6 +34,7 @@ services:
           - traefik.http.routers.traefikRouter.service=api@internal
           - traefik.http.routers.traefikRouter.entrypoints=http
           - traefik.http.middlewares.test-auth.basicauth.users=rootmessages:$$apr1$$G4tOTTMW$$limDBQWcCnVhwHEHkhAim1
+          
      networks:
        - proxy-net
 
