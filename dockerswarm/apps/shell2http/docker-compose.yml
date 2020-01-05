@@ -6,7 +6,7 @@ networks:
    
 services:
   shell2http_swarm_master:
-    build: ./Dockerfile.swarm_master
+    image: bpmspace/shell2http
     hostname: shell2http_swarm_master
     deploy:
       labels:
@@ -21,7 +21,7 @@ services:
       - proxy-net   
 
   shell2http_swarm_node:
-    build: ./Dockerfile.swarm_node
+    build: bpmspace/shell2http
     hostname: shell2http_swarm_node
     deploy:
       labels:
