@@ -75,7 +75,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 
 > Name:	TraefikReverseProxy  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
-> Compose path: /dockerswarm/management/traefik/
+> Compose path: /dockerswarm/management/traefik/  
 > or via ssh sudo docker stack deploy -c BPMspaceCloud/dockerswarm/management/traefik/docker-compose.yml TraefikReverseProxy  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://traefik.bpmspace.net/dashboard/#/  
 
