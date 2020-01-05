@@ -21,7 +21,7 @@ services:
       - proxy-net   
 
 shell2http_swarm_node:
-    build: ./Dockerfile.swarm_master
+    build: ./Dockerfile.swarm_node
     hostname: shell2http_swarm_node
     deploy:
       labels:

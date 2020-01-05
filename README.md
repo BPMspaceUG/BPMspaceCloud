@@ -107,3 +107,12 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > TEST: http://test_phpmyadmin_mariadb10.bpmspace.net/   
 > TEST: http://test_phpmyadmin_mysql5.bpmspace.net/   
 > TEST: http://test_phpmyadmin_mysql8.bpmspace.net/   
+
+
+> Name:	shell2http   
+> Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/   
+> Compose path: /dockerswarm/apps/shell2http/   
+> or via ssh  sudo docker stack deploy -c BPMspaceCloud/dockerswarm/apps/shell2http/docker-compose.yml shell2http
+> TEST: http://test_phpmyadmin_mariadb10.bpmspace.net/   
+> TEST: http://test_phpmyadmin_mysql5.bpmspace.net/   
+> TEST: http://test_phpmyadmin_mysql8.bpmspace.net/   
