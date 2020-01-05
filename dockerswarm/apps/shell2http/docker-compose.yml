@@ -7,7 +7,7 @@ networks:
 services:
   shell2http_swarm_master:
     image: bpmspace/docker_bpmspace_base:shell2http
-    command: '/date date /top "top | head -10"'
+    command: '-form /date date /top "top | head -10" /form "echo $v_from, $v_to"'
     hostname: shell2http_swarm_master
     deploy:
       labels:
