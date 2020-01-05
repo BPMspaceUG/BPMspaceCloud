@@ -5,17 +5,32 @@ networks:
    external: true
    
 services:
-  shell2http:
-    build: ./Dockerfile.master
-    hostname: shell2http
+    shell2http_swarm_master:
+    build: ./Dockerfile.swarm_master
+    hostname: shell2http_swarm_master
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.shell2http.rule=Host(`shell2http.bpmspace.net`)
-        - traefik.http.services.shell2http-service.loadbalancer.server.port=8080
+        - traefik.http.routers.shell2http_swarm_master.rule=Host(`shell2http_swarm_master.bpmspace.net`)
+        - traefik.http.services.shell2http_swarm_master-service.loadbalancer.server.port=8080
       mode: replicated
       replicas: 1
       placement:
         constraints: [node.role==master]
+    networks:
+      - proxy-net   
+
+shell2http_swarm_node:
+    build: ./Dockerfile.swarm_master
+    hostname: shell2http_swarm_node
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.shell2http_swarm_node.rule=Host(`shell2http_swarm_node.bpmspace.net`)
+        - traefik.http.services.shell2http_swarm_node-service.loadbalancer.server.port=8080
+      mode: replicated
+      replicas: 2
+      placement:
+        constraints: [node.role==node]
     networks:
       - proxy-net   
