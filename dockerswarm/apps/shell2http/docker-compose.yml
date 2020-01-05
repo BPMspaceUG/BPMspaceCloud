@@ -1,0 +1,21 @@
+version: '3.7'
+
+networks:
+ proxy-net:
+   external: true
+   
+services:
+  shell2http:
+    build: ./Dockerfile.master
+    hostname: shell2http
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.shell2http.rule=Host(`shell2http.bpmspace.net`)
+        - traefik.http.services.shell2http-service.loadbalancer.server.port=8080
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role==master]
+    networks:
+      - proxy-net   

@@ -34,11 +34,11 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 ### STEP I - ssh to docker_master_001 - login as rootmessages
 	1) sudo rm /root/bpmspace_setup_dockerhost_stretch.sh 
 	2) cd /home/rootmessages
-	3) chmod +x ./BPMspaceCloud/dockerswarm/scripts/setup.sh
+	3) chmod +x ./BPMspaceCloud/dockerswarm/scripts/bpmspace_initiate_dockerswarm.sh
 	4) sudo ./BPMspaceCloud/dockerswarm/scripts/setup.sh <IP@-MASTER>
 	
 ### STEP II - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
-	1) sudo rm /root/bpmspace_setup_dockerhost_stretch.s
+	1) sudo rm /root/bpmspace_setup_dockerhost_stretch.sh
 	2) docker swarm join --token <TOKEN FROM STEP I-4>  <IP@-MASTER>:2377
 	
 ### STEP III - ssh to docker_master_001 - login as rootmessages

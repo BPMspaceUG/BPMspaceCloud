@@ -90,16 +90,16 @@ cd /home/rootmessages
 if [ "$FIRSTTIME" = "TRUE" ]; then
 	echo "let's clone the BPMspaceUG GIT repo since it is the first time the script is running"
 	git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
-	git clone https://github.com/docker-how-to/portainer-bash-scripts.git
+	#git clone https://github.com/docker-how-to/portainer-bash-scripts.git
 else
 	echo "let's pull the BPMspaceUG GIT repo since it is NOT the first time the script is running"
 	cd BPMspaceCloud
 	git pull
 	cd /home/rootmessages
-	echo "let's pull the portainer-bash-scripts GIT repo since it is NOT the first time the script is running"
-	cd portainer-bash-scripts
-	git pull
-	cd /home/rootmessages
+	#echo "let's pull the portainer-bash-scripts GIT repo since it is NOT the first time the script is running"
+	#cd portainer-bash-scripts
+	#git pull
+	#cd /home/rootmessages
 fi 
 
 echo "let's set hostname to $HOST"
