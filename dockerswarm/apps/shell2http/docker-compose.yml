@@ -6,7 +6,7 @@ networks:
    
 services:
   shell2http_swarm_master:
-    image: msoap/shell2http
+    image: bpmspace/docker_bpmspace_base:shell2http
     hostname: shell2http_swarm_master
     deploy:
       labels:
@@ -22,7 +22,7 @@ services:
       - proxy-net   
 
   shell2http_swarm_node:
-    image: msoap/shell2http
+    image: bpmspace/docker_bpmspace_base:shell2http
     hostname: shell2http_swarm_node
     deploy:
       labels:
