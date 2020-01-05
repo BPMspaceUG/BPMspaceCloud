@@ -5,8 +5,7 @@ networks:
    external: true
    
 services:
-
-shell2http_swarm_master:
+  shell2http_swarm_master:
     build: ./Dockerfile.swarm_master
     hostname: shell2http_swarm_master
     deploy:
@@ -21,7 +20,7 @@ shell2http_swarm_master:
     networks:
       - proxy-net   
 
-shell2http_swarm_node:
+  shell2http_swarm_node:
     build: ./Dockerfile.swarm_node
     hostname: shell2http_swarm_node
     deploy:
