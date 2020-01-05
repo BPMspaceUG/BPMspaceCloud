@@ -7,6 +7,7 @@ networks:
 services:
   shell2http_swarm_master:
     image: bpmspace/docker_bpmspace_base:shell2http
+    command: "-form /date date /ps "ps aux" /form 'echo $v_from, $v_to'"
     hostname: shell2http_swarm_master
     deploy:
       labels:
