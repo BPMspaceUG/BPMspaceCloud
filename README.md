@@ -110,4 +110,6 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > Compose path: /dockerswarm/apps/shell2http/  
 > or via ssh  sudo docker stack deploy -c BPMspaceCloud/dockerswarm/apps/shell2http/docker-compose.yml shell2http  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://shell2http_swarm_master.bpmspace.net/  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://shell2http_swarm_master.bpmspace.net/form?from=10&to=76987  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://shell2http_swarm_node.bpmspace.net/  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://shell2http_swarm_node.bpmspace.net/form?from=10&to=76987  
