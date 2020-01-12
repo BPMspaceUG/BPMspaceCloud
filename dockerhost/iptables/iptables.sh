@@ -24,8 +24,8 @@ iptables -A INPUT -p tcp -m state --state NEW --dport 7946 -j ACCEPT
 iptables -A INPUT -p udp -m state --state NEW --dport 7946 -j ACCEPT
 iptables -A INPUT -p udp -m state --state NEW --dport 4789 -j ACCEPT
 #GlusterFS
-iptables -A INPUT -p tcp -m state --state NEW --dport --dport 24007:24008 -j ACCEPT
-iptables -A INPUT -p tcp -m state --state NEW --dport --dport 49152:49156 -j ACCEPT
+iptables -A INPUT -p tcp -m state --state NEW --dport 24007:24008 -j ACCEPT
+iptables -A INPUT -p tcp -m state --state NEW --dport 49152:49156 -j ACCEPT
 
 
 
