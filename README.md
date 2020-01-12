@@ -26,6 +26,13 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 
 ## ClusterFS Initial Setup 
 ### STEP I - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
+
+http://embaby.com/blog/using-glusterfs-docker-swarm-cluster/
+https://blog.ruanbekker.com/blog/2019/03/05/setup-a-3-node-replicated-storage-volume-with-glusterfs/?referral=github.com
+https://medium.com/running-a-software-factory/setup-3-node-high-availability-cluster-with-glusterfs-and-docker-swarm-b4ff80c6b5c3
+
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) Setup only a 2 Node GlusterFS on the 2 Swarm Nodes (workers)
+
 	1) sudo su root
 	2) lsblk
 	3) mkfs.xfs /dev/sdX
@@ -36,7 +43,10 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	8) echo '/dev/sdX /gluster/bricks/node_00Y xfs defaults 0 0' >> /etc/fstab
 	9) mount -a
 	10) mkdir /gluster/bricks/node_00Y/brick
+	11) reboot
 
+
+	
 ## DockerSwarm Initial Setup
 
 BPMspaceCloud DockerSwarm is based on the Imixs-Cloud - https://github.com/imixs/imixs-cloud
