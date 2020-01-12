@@ -47,6 +47,33 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	12) sudo systemctl enable glusterfs-server
 	14) reboot
 
+### STEP II - ssh to docker_node_001
+	1) sudo gluster peer probe <IP@-NODE002>
+		Reply: peer probe: success.
+	2) sudo gluster pool list
+		Reply:
+			UUID                                    Hostname        State
+			ff972510-2b65-4b4f-b06c-9b87abc78d90    <IP@-NODE002>   Connected
+			10b30a17-718b-4d92-bf04-9b8720085dd2    localhost       Connected
+	3) sudo gluster volume create gluster_fs_nodes \
+		replica 2 \
+		<IP@-NODE001>:/gluster/bricks/node_001/brick \
+		<IP@-NODE002>:/gluster/bricks/node_002/brick
+		Reply:
+		volume create: gluster_fs_nodes: success: please start the volume to access data
+	4) sudo gluster volume start gluster_fs_nodes
+		Reply: volume start: gluster_fs_nodes: success
+	5) sudo gluster volume status gluster_fs_nodes
+	6) sudo gluster volume set gluster_fs_nodes auth.allow <IP@-NODE001>,<IP@-NODE002>
+	
+### STEP III - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
+	1) sudo su root
+	2) mkdir /mnt/gluster/ -p
+	3) mkdir /mnt/gluster/gluster_fs_nodes -p
+	4) echo 'localhost:/gluster_fs_nodes /mnt/gluster/gluster_fs_nodes glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab
+	5) mount -a
+	6) df -h
+
 ## DockerSwarm Initial Setup
 
 BPMspaceCloud DockerSwarm is based on the Imixs-Cloud - https://github.com/imixs/imixs-cloud
