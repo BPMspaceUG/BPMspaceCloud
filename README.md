@@ -31,7 +31,7 @@ http://embaby.com/blog/using-glusterfs-docker-swarm-cluster/
 https://blog.ruanbekker.com/blog/2019/03/05/setup-a-3-node-replicated-storage-volume-with-glusterfs/?referral=github.com
 https://medium.com/running-a-software-factory/setup-3-node-high-availability-cluster-with-glusterfs-and-docker-swarm-b4ff80c6b5c3
 
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) Setup only a 2 Node GlusterFS on the 2 Swarm Nodes (workers)
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Setup only a 2 Node GlusterFS on the 2 Swarm Nodes (workers)
 
 	1) sudo su root
 	2) lsblk
@@ -45,8 +45,6 @@ https://medium.com/running-a-software-factory/setup-3-node-high-availability-clu
 	10) mkdir /gluster/bricks/node_00Y/brick
 	11) reboot
 
-
-	
 ## DockerSwarm Initial Setup
 
 BPMspaceCloud DockerSwarm is based on the Imixs-Cloud - https://github.com/imixs/imixs-cloud
