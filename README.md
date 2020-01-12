@@ -43,7 +43,9 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	8) echo '/dev/sdX /gluster/bricks/node_00Y xfs defaults 0 0' >> /etc/fstab
 	9) mount -a
 	10) mkdir /gluster/bricks/node_00Y/brick
-	11) reboot
+	11) df -h
+	12) sudo systemctl enable glusterfs-server
+	14) reboot
 
 ## DockerSwarm Initial Setup
 
