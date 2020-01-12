@@ -4,15 +4,14 @@ networks:
  proxy-net:
    external: true
    
-
-   
 services:
   nginx-glusterfs:
-    image: nginx:stable-alpine
+    image: dockage/alpine-nginx-php-fpm
     container_name: TEST_nginx-glusterfs
     hostname: TEST_nginx-glusterfs
+    #command: "chown -R nginx /usr/share/nginx/html/*"
     volumes:
-      - /mnt/gluster/gluster_fs_nodes/TEST_nginx-glusterfs/:/usr/share/nginx/html
+      - /mnt/gluster/gluster_fs_nodes/TEST_nginx-glusterfs/:/var/www
     deploy:
       labels:
         - traefik.enable=true
