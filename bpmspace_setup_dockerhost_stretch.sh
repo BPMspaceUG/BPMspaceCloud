@@ -64,16 +64,17 @@ if [ "$FIRSTTIME" = "TRUE" ]; then
 else
  echo "SCRIPT was running at least once ... check something else";
  if [ "$DOCKER_SWARM_TYPE" == "$ENV" ]; then
-		echo "Existing environment $DOCKER_SWARM_TYPE and requested $ENV environment are identical, we can go on ....";
+	echo "Existing environment $DOCKER_SWARM_TYPE and requested $ENV environment are identical, we can go on ....";
 	else
-		echo "You are triying to install a $ENV environment to an existing $DOCKER_SWARM_TYPE environment DANGER! DANGER! DANGER! Over and Out"
-		exit 1;
- fi	
+	echo "You are triying to install a $ENV environment to an existing $DOCKER_SWARM_TYPE environment DANGER! DANGER! DANGER! Over and Out"
+	exit 1;
+ fi
 fi
-sudo apt update > /dev/null 2>&1
+
+apt update > /dev/null 2>&1
 
 echo "let's install git, curl and sudo"
-sudo apt install -y git curl sudo
+apt install -y git curl sudo
 
 echo " "
 echo "done."
@@ -108,7 +109,7 @@ echo $HOST > /etc/hostname
 apt update > /dev/null 2>&1 
 
 echo " "
-echo "SET SSH PORT to 22"
+echo "SET SSH PORT to 7070"
 cp /home/rootmessages/BPMspaceCloud/dockerhost/daemon/sshd/sshd_config /etc/ssh/
 mkdir -p /home/rootmessages/.ssh
 cp /home/rootmessages/BPMspaceCloud/dockerhost/authorized_keys/authorized_keys /home/rootmessages/.ssh
@@ -173,11 +174,6 @@ chmod 700 /home/rootmessages/.ssh
 
 systemctl enable docker
 
-# setup  GlusterFS on worker (node)
-if  [ "$DOCKER_SWARM_TYPE" = "WORKER" ]; then
-	apt install xfsprogs attr glusterfs-server glusterfs-common glusterfs-client -y
-fi
-
 set +e # do NOT stop execution of this script when an error occurs
 echo " "
 #check if rootmessages passwd is set
@@ -207,4 +203,3 @@ done
 echo " "
 echo "setup done. ready to reboot ..."
 reboot
-
