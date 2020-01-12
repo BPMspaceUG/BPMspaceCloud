@@ -64,13 +64,13 @@ if [ "$FIRSTTIME" = "TRUE" ]; then
 else
  echo "SCRIPT was running at least once ... check something else";
  if [ "$DOCKER_SWARM_TYPE" == "$ENV" ]; then
-	echo "Existing environment $DOCKER_SWARM_TYPE and requested $ENV environment are identical, we can go on ....";
+		echo "Existing environment $DOCKER_SWARM_TYPE and requested $ENV environment are identical, we can go on ....";
 	else
-	echo "You are triying to install a $ENV environment to an existing $DOCKER_SWARM_TYPE environment DANGER! DANGER! DANGER! Over and Out"
-	exit 1;
- fi
+		echo "You are triying to install a $ENV environment to an existing $DOCKER_SWARM_TYPE environment DANGER! DANGER! DANGER! Over and Out"
+		exit 1;
+ fi	
 fi
-
+echo "here"
 apt update > /dev/null 2>&1
 
 echo "let's install git, curl and sudo"
@@ -109,7 +109,7 @@ echo $HOST > /etc/hostname
 apt update > /dev/null 2>&1 
 
 echo " "
-echo "SET SSH PORT to 7070"
+echo "SET SSH PORT to 22"
 cp /home/rootmessages/BPMspaceCloud/dockerhost/daemon/sshd/sshd_config /etc/ssh/
 mkdir -p /home/rootmessages/.ssh
 cp /home/rootmessages/BPMspaceCloud/dockerhost/authorized_keys/authorized_keys /home/rootmessages/.ssh
