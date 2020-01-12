@@ -27,9 +27,9 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 ## ClusterFS Initial Setup 
 ### STEP I - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
 
-  [using glusterfs docker swarm cluster](http://embaby.com/blog/using-glusterfs-docker-swarm-cluster/)
-  [setup a 3 node replicated storage volume with glusterfs](https://blog.ruanbekker.com/blog/2019/03/05/setup-a-3-node-replicated-storage-volume-with-glusterfs/?referral=github.com)
-  [setup 3 node high-availability-cluster with glusterfs and docker swarm](https://medium.com/running-a-software-factory/setup-3-node-high-availability-cluster-with-glusterfs-and-docker-swarm-b4ff80c6b5c3)
+* [using glusterfs docker swarm cluster](http://embaby.com/blog/using-glusterfs-docker-swarm-cluster/)  
+* [setup a 3 node replicated storage volume with glusterfs](https://blog.ruanbekker.com/blog/2019/03/05/setup-a-3-node-replicated-storage-volume-with-glusterfs/?referral=github.com)
+* [setup 3 node high-availability-cluster with glusterfs and docker swarm](https://medium.com/running-a-software-factory/setup-3-node-high-availability-cluster-with-glusterfs-and-docker-swarm-b4ff80c6b5c3)
 
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Setup only a 2 Node GlusterFS on the 2 Swarm Nodes (workers)
 
