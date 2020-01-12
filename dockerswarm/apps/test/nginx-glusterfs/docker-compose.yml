@@ -1,0 +1,27 @@
+version: '3.7'
+
+networks:
+ proxy-net:
+   external: true
+   
+
+   
+services:
+  nginx-glusterfs:
+    image: nginx:stable-alpine
+    container_name: TEST_nginx-glusterfs
+    hostname: TEST_nginx-glusterfs
+    volumes:
+      - /mnt/gluster/gluster_fs_nodes/TEST_nginx-glusterfs/:/usr/share/nginx/html
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.nginx-glusterfs.rule=Host(`test_nginx-glusterfs.bpmspace.net`)
+        - traefik.http.services.nginx-glusterfs-service.loadbalancer.server.port=80
+      mode: replicated
+      replicas: 4
+      placement:
+        constraints:
+          - node.role == worker
+    networks:
+      - proxy-net   
