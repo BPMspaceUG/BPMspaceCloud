@@ -174,6 +174,11 @@ chmod 700 /home/rootmessages/.ssh
 
 systemctl enable docker
 
+# setup  GlusterFS on worker (node)
+if  [ "$DOCKER_SWARM_TYPE" = "WORKER" ]; then
+	apt install xfsprogs attr glusterfs-server glusterfs-common glusterfs-client -y
+fi
+
 set +e # do NOT stop execution of this script when an error occurs
 echo " "
 #check if rootmessages passwd is set
