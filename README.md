@@ -166,6 +166,9 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://shell2http_swarm_node.bpmspace.net/form?from=10&to=76987  
 
 ### STEP Ix - setup shell2http && Test in [Portainer Management Console](http:/bpmspace.net:8880)
+
+> sudo mkdir -p /mnt/gluster/gluster_fs_nodes/TEST_nginx-glusterfs on docker_node_001 or docker_node_002  
+  
 > Name:	TEST_nginx-glusterfs  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/apps/test/TEST_nginx-glusterfs/  
