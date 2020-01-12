@@ -169,4 +169,4 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > Name:	TEST_nginx-glusterfs  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/apps/test/TEST_nginx-glusterfs/  
-> or via ssh  sudo docker stack deploy -c BPMspaceCloud/dockerswarm/apps/shell2http/docker-compose.yml shell2http  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://test_nginx-glusterfs.bpmspace.net/
