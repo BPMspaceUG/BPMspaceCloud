@@ -70,11 +70,10 @@ else
 		exit 1;
  fi	
 fi
-echo "here"
-apt update > /dev/null 2>&1
+sudo apt update > /dev/null 2>&1
 
 echo "let's install git, curl and sudo"
-apt install -y git curl sudo
+sudo apt install -y git curl sudo
 
 echo " "
 echo "done."
