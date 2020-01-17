@@ -112,7 +112,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	4) sudo docker stack deploy -c ./BPMspaceCloud/dockerswarm/management/portainer/docker-compose.yml Portainer
 	5) DOCKER SECRET NOT WORKING AT THE MOMENT WITH PORTAINER - so set passwd for user admin after the first start
 
-### STEP IV - setup Portainer in [Portainer Management Console](http:/bpmspace.net:8880)
+### STEP IV - setup Portainer in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `NOTE:`The Stack "Portainer" has do be added a second time. Only then portainer can be fully controlde by Portainer.
 
@@ -122,7 +122,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	
 ![Portainer](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_Portainer.png "Portainer")
 
-### STEP V - setup TraefikReverseProxy in [Portainer Management Console](http:/bpmspace.net:8880)
+### STEP V - setup TraefikReverseProxy in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
 > Name:	TraefikReverseProxy  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
@@ -132,7 +132,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 
 ![TraefikReverseProxy](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_TraefikReverseProxy.png "TraefikReverseProxy")
 
-### STEP VI - setup WHOIS && Test in [Portainer Management Console](http:/bpmspace.net:8880)
+### STEP VI - setup WHOIS && Test in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
 > Name:	Test_Whois  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
@@ -140,7 +140,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > or via ssh sudo docker stack deploy -c BPMspaceCloud/dockerswarm/apps/test/whoami/docker-compose.yml Test_Whois  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://test_whoami.bpmspace.net/  
 
-### STEP VII - setup TEST_mariadb-mysql-phpmyadmin && Test in [Portainer Management Console](http:/bpmspace.net:8880)
+### STEP VII - setup TEST_mariadb-mysql-phpmyadmin && Test in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `NOTE:`Check Volumes First!
 
@@ -155,7 +155,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://test_phpmyadmin_mysql5.bpmspace.net/  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://test_phpmyadmin_mysql8.bpmspace.net/  
 
-### STEP VIII - setup shell2http && Test in [Portainer Management Console](http:/bpmspace.net:8880)
+### STEP VIII - setup shell2http && Test in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 > Name:	shell2http  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/apps/shell2http/  
@@ -165,7 +165,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://shell2http_swarm_node.bpmspace.net/  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://shell2http_swarm_node.bpmspace.net/form?from=10&to=76987  
 
-### STEP Ix - setup shell2http && Test in [Portainer Management Console](http:/bpmspace.net:8880)
+### STEP Ix - setup shell2http && Test in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
 > sudo mkdir -p /mnt/gluster/gluster_fs_nodes/TEST_nginx-glusterfs on docker_node_001 or docker_node_002  
   
