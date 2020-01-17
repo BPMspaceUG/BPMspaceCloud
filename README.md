@@ -109,7 +109,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 			in0o2qh9iv8342ggzxcxiw15	docker_node_002.bpmspace.net	Ready	Active				19.03.5
 	3) echo -n password | docker secret create portainer-admin-pass -
 		(see https://github.com/portainer/portainer/issues/2816)
-	4) sudo docker stack deploy -c ./imixs-cloud/management/portainer/docker-compose.yml Portainer
+	4) sudo docker stack deploy -c ./BPMspaceCloud/dockerswarm/management/portainer/docker-compose.yml Portainer
 	5) DOCKER SECRET NOT WORKING AT THE MOMENT WITH PORTAINER - so set passwd for user admin after the first start
 
 ### STEP IV - setup Portainer in [Portainer Management Console](http:/bpmspace.net:8880)
