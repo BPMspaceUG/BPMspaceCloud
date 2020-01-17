@@ -40,6 +40,7 @@ services:
     ports:
       - "8880:9000"
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
       - /var/cert:/certs
     networks:
@@ -52,14 +53,3 @@ services:
     secrets:
       - portainer-admin-pass
 
-secrets:
-  portainer-admin-pass:
-    external: true
-    
-networks:
-  agent_network:
-    driver: overlay
-    attachable: true
-
-volumes:
-  portainer_data:
