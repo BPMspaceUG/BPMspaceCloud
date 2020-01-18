@@ -14,7 +14,7 @@ services:
       --entryPoints.http.address=":80"
       --entryPoints.https.address=":443"
       --entryPoints.mysql.address=":3306"
-      --entryPoints.https.tls.certificates.certFile="/certs/wildcard.bpmspace.net.bundle.crt"
+      --entryPoints.https.tls.certificates.certFile="/certs/wildcard.bpmspace.net.bundle_2.crt"
       --entryPoints.https.tls.certificates.keyFile="/certs/wildcard.bpmspace.net.key"
       --accesslog
       --log.level=DEBUG
