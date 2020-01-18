@@ -33,6 +33,7 @@ services:
           - traefik.http.routers.traefikRouter.rule=Host(`traefik.bpmspace.net`)
           - traefik.http.routers.traefikRouter.service=api@internal
           - traefik.http.routers.traefikRouter.entrypoints=http
-          - traefik.http.middlewares.test-auth.basicauth.users=rootmessages:$$apr1$$G4tOTTMW$$limDBQWcCnVhwHEHkhAim1
+          - traefik.http.routers.traefikRouter.middlewares=dshbrd-auth
+          - traefik.http.middlewares.dshbrd-auth.basicauth.users=rootmessages:$$apr1$$G4tOTTMW$$limDBQWcCnVhwHEHkhAim1
      networks:
        - proxy-net

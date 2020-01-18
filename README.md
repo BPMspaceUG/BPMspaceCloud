@@ -130,7 +130,8 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > or via ssh sudo docker stack deploy -c BPMspaceCloud/dockerswarm/management/traefik/docker-compose.yml TraefikReverseProxy  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://traefik.bpmspace.net/dashboard/#/  
 
-![TraefikReverseProxy](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_TraefikReverseProxy.png "TraefikReverseProxy")
+![TraefikReverseProxy](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_TraefikReverseProxy.png "TraefikReverseProxy")  
+> INFO https://teqqy.de/traefik-dashboard-konfigurieren/
 
 ### STEP VI - setup WHOIS && Test in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
