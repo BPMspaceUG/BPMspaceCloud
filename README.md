@@ -128,7 +128,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/management/traefik/  
 > or via ssh sudo docker stack deploy -c BPMspaceCloud/dockerswarm/management/traefik/docker-compose.yml TraefikReverseProxy  
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://traefik.bpmspace.net/dashboard/#/  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://traefik.bpmspace.net/dashboard/#/  
 
 ![TraefikReverseProxy](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_TraefikReverseProxy.png "TraefikReverseProxy")
 
@@ -138,7 +138,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/apps/test/whoami/  
 > or via ssh sudo docker stack deploy -c BPMspaceCloud/dockerswarm/apps/test/whoami/docker-compose.yml Test_Whois  
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://test_whoami.bpmspace.net/  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://test_whoami.bpmspace.net/  
 
 ### STEP VII - setup TEST_mariadb-mysql-phpmyadmin && Test in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
@@ -151,19 +151,19 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/apps/test/mariadb-mysql-phpmyadmin/  
 > or via ssh  sudo docker stack deploy -c BPMspaceCloud/dockerswarm/apps/test/mariadb-mysql-phpmyadmin/docker-compose.yml TEST_mariadb-mysql-phpmyadmin  
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://test_phpmyadmin_mariadb10.bpmspace.net/  
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://test_phpmyadmin_mysql5.bpmspace.net/  
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://test_phpmyadmin_mysql8.bpmspace.net/  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://test_phpmyadmin_mariadb10.bpmspace.net/  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://test_phpmyadmin_mysql5.bpmspace.net/  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://test_phpmyadmin_mysql8.bpmspace.net/  
 
 ### STEP VIII - setup shell2http && Test in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 > Name:	shell2http  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/apps/shell2http/  
 > or via ssh  sudo docker stack deploy -c BPMspaceCloud/dockerswarm/apps/shell2http/docker-compose.yml shell2http  
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://shell2http_swarm_master.bpmspace.net/  
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://shell2http_swarm_master.bpmspace.net/form?from=10&to=76987  
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://shell2http_swarm_node.bpmspace.net/  
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://shell2http_swarm_node.bpmspace.net/form?from=10&to=76987  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://shell2http_swarm_master.bpmspace.net/  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://shell2http_swarm_master.bpmspace.net/form?from=10&to=76987  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://shell2http_swarm_node.bpmspace.net/  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://shell2http_swarm_node.bpmspace.net/form?from=10&to=76987  
 
 ### STEP Ix - setup shell2http && Test in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
@@ -172,5 +172,5 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > Name:	TEST_nginx-glusterfs  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/apps/test/TEST_nginx-glusterfs/  
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST http://test_nginx-glusterfs.bpmspace.net/  
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://test_nginx-glusterfs.bpmspace.net/  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST BASH: for ((n=0;n<1000000;n++)); do curl test_nginx-glusterfs.bpmspace.net; echo; done
