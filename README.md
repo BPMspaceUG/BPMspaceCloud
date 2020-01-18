@@ -166,7 +166,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://shell2http_swarm_node.bpmspace.net/  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://shell2http_swarm_node.bpmspace.net/form?from=10&to=76987  
 
-### STEP Ix - setup shell2http && Test in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
+### STEP Ix - setup TEST_nginx-glusterfs && Test in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
 > sudo mkdir -p /mnt/gluster/gluster_fs_nodes/TEST_nginx-glusterfs on docker_node_001 or docker_node_002  
   
@@ -174,4 +174,4 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
 > Compose path: /dockerswarm/apps/test/TEST_nginx-glusterfs/  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://test_nginx-glusterfs.bpmspace.net/  
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST BASH: for ((n=0;n<1000000;n++)); do curl test_nginx-glusterfs.bpmspace.net; echo; done
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST BASH: for ((n=0;n<1000000;n++));do printf "\033c"; echo "+++++++"; for ((m=0;m<5;m++)); do curl test_nginx-glusterfs.bpmspace.net; echo "-----"; done; sleep 3; done

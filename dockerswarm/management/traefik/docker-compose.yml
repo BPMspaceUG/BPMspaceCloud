@@ -11,7 +11,8 @@ services:
       --providers.docker
       --providers.docker.exposedbydefault=false
       --providers.docker.swarmmode=true
-      --entryPoints.http.address=":80"
+      --entryPoints.web.address=":80"
+      --entryPoints.websecure.address=":443"
       --entryPoints.mysql.address=":3306"
       --accesslog
       --log.level=DEBUG
@@ -19,9 +20,12 @@ services:
       --api.dashboard=true
      ports:
        - 80:80
+       - 443:443
        - 8080:8080
      volumes:
        - /var/run/docker.sock:/var/run/docker.sock
+       - /var/cert:/certs/
+       - ./config:/config/
      deploy:
         mode: global
         placement:
@@ -29,11 +33,12 @@ services:
             - node.role == manager
         labels:
           - traefik.enable=true
-          - traefik.http.services.justAdummyService.loadbalancer.server.port=1337
           - traefik.http.routers.traefikRouter.rule=Host(`traefik.bpmspace.net`)
+          - traefik.http.routers.traefikRouter.tls=true
+          - traefik.http.routers.traefikRouter.entrypoints=websecure
           - traefik.http.routers.traefikRouter.service=api@internal
-          - traefik.http.routers.traefikRouter.entrypoints=http
           - traefik.http.routers.traefikRouter.middlewares=dshbrd-auth
           - traefik.http.middlewares.dshbrd-auth.basicauth.users=rootmessages:$$apr1$$G4tOTTMW$$limDBQWcCnVhwHEHkhAim1
+          - traefik.http.services.justAdummyService.loadbalancer.server.port=1337
      networks:
        - proxy-net

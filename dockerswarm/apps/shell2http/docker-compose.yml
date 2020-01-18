@@ -7,7 +7,7 @@ networks:
 services:
   shell2http_swarm_master:
     image: bpmspace/docker_bpmspace_base:shell2http
-    command: '-form  /date date /top "top | head -10" /form "echo $$v_from, $$v_to"'
+    command: '-form  /date date /top "top | head -10" /form "echo $$v_from, $$v_to" /check_glusterfs "for ((n=0;n<1000000;n++));do printf \"\033c\"; echo \"+++++++\"; for ((m=0;m<5;m++)); do curl test_nginx-glusterfs.bpmspace.net; echo \"-----\"; done; sleep 3; done"'
     hostname: shell2http_swarm_master
     deploy:
       labels:
