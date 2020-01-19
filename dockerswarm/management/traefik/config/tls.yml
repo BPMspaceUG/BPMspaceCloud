@@ -1,4 +1,0 @@
-tls:
-  certificates:
-   - certFile: /certs/wildcard.bpmspace.net.bundle.crt
-     keyFile: /certs/wildcard.bpmspace.net.key
