@@ -25,7 +25,7 @@ services:
      volumes:
        - /var/run/docker.sock:/var/run/docker.sock
        - /var/cert:/certs/
-       - ./config:/config/
+       - /home/rootmessages/BPMspaceCloud/dockerswarm/management/traefik/config:/etc/traefik/
      deploy:
         mode: global
         placement:
