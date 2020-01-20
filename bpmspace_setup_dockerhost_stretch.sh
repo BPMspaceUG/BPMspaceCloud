@@ -86,33 +86,18 @@ echo " "
 id -u rootmessages &>/dev/null || adduser --quiet --disabled-password --gecos "" rootmessages 
 id -u rootmessages &>/dev/null || adduser rootmessages sudo
 
-cd /home/rootmessages
-if [ "$FIRSTTIME" = "TRUE" ]; then
-	echo "let's clone the BPMspaceUG GIT repo since it is the first time the script is running"
-	git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
-	#git clone https://github.com/docker-how-to/portainer-bash-scripts.git
-else
-	echo "let's pull the BPMspaceUG GIT repo since it is NOT the first time the script is running"
-	cd BPMspaceCloud
-	git pull
-	cd /home/rootmessages
-	#echo "let's pull the portainer-bash-scripts GIT repo since it is NOT the first time the script is running"
-	#cd portainer-bash-scripts
-	#git pull
-	#cd /home/rootmessages
-fi 
+#update GIT REPO gluster_bpmspacecloud
+cd /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud
+git pull
 
 echo "let's set hostname to $HOST"
 echo $HOST > /etc/hostname
 
-
-apt update > /dev/null 2>&1 
-
 echo " "
 echo "SET SSH PORT to 7070"
-cp /home/rootmessages/BPMspaceCloud/dockerhost/daemon/sshd/sshd_config /etc/ssh/
+cp /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerhost/daemon/sshd/sshd_config /etc/ssh/
 mkdir -p /home/rootmessages/.ssh
-cp /home/rootmessages/BPMspaceCloud/dockerhost/authorized_keys/authorized_keys /home/rootmessages/.ssh
+cp /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerhost/authorized_keys/authorized_keys /home/rootmessages/.ssh
 
 # Firewall stuff
 echo "adding iptables script to /etc/rc.local"
@@ -125,7 +110,7 @@ echo "/opt/iptables.sh" >>/etc/rc.local
 echo "exit 0" >> /etc/rc.local
 
 # copy iptables.sh /opt
-cp /home/rootmessages/BPMspaceCloud/dockerhost/iptables/iptables.sh /opt
+cp /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerhost/iptables/iptables.sh /opt
 chmod u+x /opt/iptables.sh
 chmod u+x /etc/rc.local
 
