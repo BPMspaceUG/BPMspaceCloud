@@ -13,7 +13,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 ## ClusterFS Initial Setup 
 ### STEP I - ssh to docker_master_001, docker_node_001 AND docker_node_002 - login as root
 
-Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
+Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
 
 * [using glusterfs docker swarm cluster](http://embaby.com/blog/using-glusterfs-docker-swarm-cluster/)  
 * [setup a 3 node replicated storage volume with glusterfs](https://blog.ruanbekker.com/blog/2019/03/05/setup-a-3-node-replicated-storage-volume-with-glusterfs/?referral=github.com)
@@ -80,7 +80,7 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 	5) git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
 
 ### STEP III - ssh to docker_node_001 OR docker_node_002 - login as root
-Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
+Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
 	1) mkdir /gluster/bricks/node_00Y/brick2
 	2) gluster volume create gluster_bpmspacecloud_nodes \
 		replica 2 \
@@ -90,7 +90,7 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 	4) gluster volume set gluster_bpmspacecloud auth.allow <IP@NODE001>,<IP@NODE002>
 	
 ### STEP IV - ssh to docker_node_001 AND docker_node_002 - login as root
-Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
+Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
 	1) sudo su root
 	2) mkdir /mnt/gluster/ -p
 	3) mkdir /mnt/gluster/gluster_bpmspacecloud -p
@@ -102,16 +102,16 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 
 ## DockerHosts Initial Setup
 ### ssh to docker_master_001 OR devtest.bpmspace.net - login as root 
->/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh MASTER docker_master_001.bpmspace.net
-OR
->/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh MASTER devtest.bpmspace.net
+>/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh MASTER docker_master_001.bpmspace.net  
+OR  
+>/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh MASTER devtest.bpmspace.net  
 
 ### ssh to docker_node_001 (WORKER) - login as root
-Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
+Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
 >/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_001.bpmspace.net
 
 ### ssh to docker_node_002 (WORKER) - login as root
-Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
+Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
 >/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_002.bpmspace.net
 
 ## DockerSwarm Initial Setup
