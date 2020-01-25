@@ -186,5 +186,10 @@ do
 done
 
 echo " "
+echo " "
+cat /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerhost/bashrc/rootmessages.bash.rc >> /home/rootmessages/.bashrc
+cat /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerhost/bashrc/root.bash.rc >> /root/.bashrc
+
+
 echo "setup done. ready to reboot ..."
 reboot

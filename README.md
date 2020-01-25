@@ -68,14 +68,15 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 	9) mkdir /mnt/gluster/gluster_bpmspacecloud -p
 	10) echo 'localhost:/gluster_bpmspacecloud /mnt/gluster/gluster_bpmspacecloud glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab
 	11) mount -a
-	12) cd /gluster_bpmspacecloud
+	12) cd /mnt/gluster/gluster_bpmspacecloud/gluster_bpmspacecloud
 	13) apt install git -y
 	13) git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
 	
 ### STEP II.B -for a SINGLE HOST Cluster- ssh to devtest.bpmspace.net - login as root
 	1) mkdir /mnt/gluster/ -p
 	2) mkdir /mnt/gluster/gluster_bpmspacecloud -p
-	3) ln -s /mnt/gluster/gluster_bpmspacecloud /gluster_bpmspacecloud
+	2) mkdir /mnt/gluster/gluster_bpmspacecloud_nodes -p
+	3) cd /mnt/gluster/gluster_bpmspacecloud
 	4) apt install git -y
 	5) git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
 
