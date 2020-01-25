@@ -81,6 +81,7 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 
 ### STEP III - ssh to docker_node_001 OR docker_node_002 - login as root
 Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
+
 	1) mkdir /gluster/bricks/node_00Y/brick2
 	2) gluster volume create gluster_bpmspacecloud_nodes \
 		replica 2 \
@@ -91,6 +92,7 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 	
 ### STEP IV - ssh to docker_node_001 AND docker_node_002 - login as root
 Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
+
 	1) sudo su root
 	2) mkdir /mnt/gluster/ -p
 	3) mkdir /mnt/gluster/gluster_bpmspacecloud -p
