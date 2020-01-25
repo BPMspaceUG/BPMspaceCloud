@@ -101,23 +101,18 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 	7) df -h
 
 ## DockerHosts Initial Setup
-
-
-
-### ssh to docker_master_001 - login as root 
->wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
->chmod +x bpmspace_setup_dockerhost_stretch.sh
->./bpmspace_setup_dockerhost_stretch.sh MASTER docker_master_001.bpmspace.net
+### ssh to docker_master_001 OR devtest.bpmspace.net - login as root 
+>/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh MASTER docker_master_001.bpmspace.net
+OR
+>/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh MASTER devtest.bpmspace.net
 
 ### ssh to docker_node_001 (WORKER) - login as root
->wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
->chmod +x bpmspace_setup_dockerhost_stretch.sh
->./bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_001.bpmspace.net
+Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
+>/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_001.bpmspace.net
 
 ### ssh to docker_node_002 (WORKER) - login as root
->wget https://raw.githubusercontent.com/BPMspaceUG/BPMspaceCloud/master/bpmspace_setup_dockerhost_stretch.sh
->chmod +x bpmspace_setup_dockerhost_stretch.sh
->./bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_002.bpmspace.net
+Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
+>/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_002.bpmspace.net
 
 ## DockerSwarm Initial Setup
 
