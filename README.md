@@ -43,7 +43,7 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 	REPEAT for docker_node_001 AND docker_node_002
 	
 ### STEP II.A -for a Multi HOST Docker Swarm- ssh to docker_master_001 - login as root
-	1) sudo su root
+cd 
 	2) gluster peer probe <IP@NODE001>
 	   gluster peer probe <IP@NODE002>
 		Reply: peer probe: success.
