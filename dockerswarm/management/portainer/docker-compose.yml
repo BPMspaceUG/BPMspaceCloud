@@ -42,7 +42,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
-      - /var/cert:/certs
+      - /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/certs:/certs
     networks:
       - agent_network
     deploy:

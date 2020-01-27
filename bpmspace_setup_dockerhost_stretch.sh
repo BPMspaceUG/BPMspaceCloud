@@ -186,7 +186,7 @@ do
 done
 
 echo " "
-echo " "
+echo "change bash promt of root (red) and rootmessages (green) "
 cat /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerhost/bashrc/rootmessages.bash.rc >> /home/rootmessages/.bashrc
 cat /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerhost/bashrc/root.bash.rc >> /root/.bashrc
 
