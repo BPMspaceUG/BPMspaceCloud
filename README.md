@@ -153,7 +153,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	4) sudo docker stack deploy -c ./BPMspaceCloud/dockerswarm/management/portainer/docker-compose.yml Portainer
 	5) DOCKER SECRET NOT WORKING AT THE MOMENT WITH PORTAINER - so set passwd for user admin after the first start
 
-### STEP IV - setup Portainer in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
+### STEP IV  A - setup Portainer PROD in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `NOTE:`The Stack "Portainer" has do be added a second time. Only then portainer can be fully controlde by Portainer.
 
@@ -162,6 +162,18 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > Compose path: /dockerswarm/management/portainer/  
 	
 ![Portainer](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_Portainer.png "Portainer")
+
+### STEP IV  B - setup Portainer DEVTEST in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `NOTE: There will be only ONE Portainer INstance in PROD to manage both endpoints "PROD" and "DEVTEST""
+> prepare on devtest.bpmspace.net - login as rootmessages
+> sudo mkdir /etc/systemd/system/docker.service.d -p
+> sudo cp /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerhost/docker-api/startup_options.conf /etc/systemd/system/docker.service.d/
+> sudo systemctl daemon-reload && sudo systemctl restart docker.service
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST curl -X GET http://localhost:2376/images/json
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST FROM MASTER_001 - MUST FAIL because firewall is closed - curl -X GET http://:2376/images/json
+
+ 
+
 
 ### STEP V - setup TraefikReverseProxy in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
