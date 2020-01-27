@@ -26,6 +26,9 @@ iptables -A INPUT -p udp -m state --state NEW --dport 4789 -j ACCEPT
 #GlusterFS
 iptables -A INPUT -p tcp -m state --state NEW --dport 24007:24008 -j ACCEPT
 iptables -A INPUT -p tcp -m state --state NEW --dport 49152:49156 -j ACCEPT
+#Docker-API
+#iptables -A INPUT -p tcp -m state --state NEW -s <IP@MASTER001> --dport 2376 -j ACCEPT
+
 
 
 

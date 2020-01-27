@@ -128,6 +128,9 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 ### STEP I - ssh to docker_master_001 OR OR devtest.bpmspace.net - login as rootmessages
 
 	sudo /gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/scripts/bpmspace_initiate_dockerswarm.sh <IP@MASTER>
+	OR
+	sudo /gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/scripts/bpmspace_initiate_dockerswarm.sh <IP@DEVTEST>
+	
 	
 ### STEP II - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
 
@@ -170,9 +173,11 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 > sudo cp /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerhost/docker-api/startup_options.conf /etc/systemd/system/docker.service.d/
 > sudo systemctl daemon-reload && sudo systemctl restart docker.service
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST curl -X GET http://localhost:2376/images/json
-> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST FROM MASTER_001 - MUST FAIL because firewall is closed - curl -X GET http://:2376/images/json
-
- 
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST FROM MASTER_001 - MUST FAIL because firewall is closed - curl -X GET http://<IP@DEVTEST>:2376/images/json
+> uncomment rule for #Docker-API and change from_ip -s to <IP@MASTER001>
+> sudo nano /opt/iptables.sh
+> ./opt/iptables.sh
+> ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST FROM MASTER_001 - MUST SUCCEED because firewall is open - curl -X GET http://<IP@DEVTEST>:2376/images/json
 
 
 ### STEP V - setup TraefikReverseProxy in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
