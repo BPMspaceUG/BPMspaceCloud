@@ -21,39 +21,39 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Setup a 3 Node GlusterFS on the Swarm Master and 2 Swarm workers
 
-	1) sudo su root
-	2) lsblk
-	3) apt install xfsprogs -y
-	4) mkfs.xfs /dev/sdX
-	5) apt install -y glusterfs-server
-	6) systemctl start glusterfs-server
-	5) mkdir /gluster/
-	6) mkdir /gluster/bricks/
-	7) mkdir /gluster/bricks/node_00Y OR 
-	   mkdir /gluster/bricks/master_00X
-	8) echo '/dev/sdX /gluster/bricks/node_00Y xfs defaults 0 0' >> /etc/fstab OR
-	   echo '/dev/sdX /gluster/bricks/master_00X xfs defaults 0 0' >> /etc/fstab OR
-	9) mount -a
-	10) mkdir /gluster/bricks/node_00Y/brick OR
-	    mkdir /gluster/bricks/master_00X/brick OR
-	11) df -h
-	12) sudo systemctl enable glusterfs-server
-	14) reboot
+	1) sudo su root  
+	2) lsblk  
+	3) apt install xfsprogs -y  
+	4) mkfs.xfs /dev/sdX  
+	5) apt install -y glusterfs-server  
+	6) systemctl start glusterfs-server  
+	5) mkdir /gluster/  
+	6) mkdir /gluster/bricks/  
+	7) mkdir /gluster/bricks/node_00Y  OR  
+	   mkdir /gluster/bricks/master_00X  
+	8) echo '/dev/sdX /gluster/bricks/node_00Y xfs defaults 0 0' >> /etc/fstab  OR  
+	   echo '/dev/sdX /gluster/bricks/master_00X xfs defaults 0 0' >> /etc/fstab  OR  
+	9) mount -a  
+	10) mkdir /gluster/bricks/node_00Y/brick  OR  
+	    mkdir /gluster/bricks/master_00X/brick  OR  
+	11) df -h  
+	12) sudo systemctl enable glusterfs-server  
+	14) reboot  
 
-	REPEAT for docker_node_001 AND docker_node_002
+	REPEAT for docker_node_001 AND docker_node_002  
 	
 ### STEP II.A -for a Multi HOST Docker Swarm- ssh to docker_master_001 - login as root
-cd 
-	2) gluster peer probe <IP@NODE001>
+
+	1) gluster peer probe <IP@NODE001>
 	   gluster peer probe <IP@NODE002>
 		Reply: peer probe: success.
-	3) gluster pool list
+	2) gluster pool list
 		Reply:
 			UUID                                    Hostname        State
 			cd882312-1a34-5ed2-b06c-9b942f19bd90    <IP@NODE002>   Connected
 			ff972510-2b65-4b4f-b06c-9b87abc78d90    <IP@NODE002>   Connected
 			10b30a17-718b-4d92-bf04-6a8320085dd2    localhost       Connected
-	4) gluster volume create gluster_bpmspacecloud \
+	3) gluster volume create gluster_bpmspacecloud \
 		replica 3 \
 		<IP@MASTER001>:/gluster/bricks/master_001/brick \
 		<IP@NODE001>:/gluster/bricks/node_001/brick \
@@ -94,14 +94,14 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 ### STEP IV - ssh to docker_node_001 AND docker_node_002 - login as root
 Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
 
-	1) sudo su root
-	2) mkdir /mnt/gluster/ -p
-	3) mkdir /mnt/gluster/gluster_bpmspacecloud -p
-	3) mkdir /mnt/gluster/gluster_bpmspacecloud_nodes -p
-	4) echo 'localhost:/gluster_bpmspacecloud /mnt/gluster/gluster_bpmspacecloud glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab
-	5) echo 'localhost:/gluster_bpmspacecloud_nodes /mnt/gluster/gluster_bpmspacecloud_nodes glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab
-	6) mount -a
-	7) df -h
+	1) sudo su root  
+	2) mkdir /mnt/gluster/ -p  
+	3) mkdir /mnt/gluster/gluster_bpmspacecloud -p  
+	3) mkdir /mnt/gluster/gluster_bpmspacecloud_nodes -p  
+	4) echo 'localhost:/gluster_bpmspacecloud /mnt/gluster/gluster_bpmspacecloud glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab  
+	5) echo 'localhost:/gluster_bpmspacecloud_nodes /mnt/gluster/gluster_bpmspacecloud_nodes glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab  
+	6) mount -a  
+	7) df -h  
 
 ## DockerHosts Initial Setup
 ### ssh to docker_master_001 OR devtest.bpmspace.net - login as root 
