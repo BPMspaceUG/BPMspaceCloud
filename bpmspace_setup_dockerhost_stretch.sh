@@ -30,17 +30,18 @@ set -e  # Stop execution of this script when an error occurs
 # get kicked out 
 #-------------------------------------------------------------------
 
-ENV=$1
-HOST=$2
+TYPE=$1
+ENV=$2
+HOST=$3
 
 usage () {
 
-  echo "$0 <MASTER|WORKER> <hostname>"
-  echo "example: $0 WORKER smaug.einoede.org"
+  echo "$0 <MASTER|WORKER> <PRODSTAGE|DEVTEST> <hostname>"
+  echo "example: $0 WORKER PRODSTAGE smaug.einoede.org"
 
 }
 
-if [ $# -ne 2 ];then
+if [ $# -ne 3 ];then
 
   usage
   exit 1
@@ -61,16 +62,31 @@ fi
 if [ "$FIRSTTIME" = "TRUE" ]; then 
 	echo "Scipt runs for the first time";
 	echo "DOCKER_SWARM_TYPE=$1" >> /etc/environment
+	echo "DOCKER_SWARM_ENV=$2" >> /etc/environment
 else
  echo "SCRIPT was running at least once ... check something else";
- if [ "$DOCKER_SWARM_TYPE" == "$ENV" ]; then
-	echo "Existing environment $DOCKER_SWARM_TYPE and requested $ENV environment are identical, we can go on ....";
+ if [ "$DOCKER_SWARM_TYPE" == "$TYPE" ]; then
+	echo "Existing type $DOCKER_SWARM_TYPE and requested $TYPE type are identical, we can go on ....";
+	else
+	echo "You are triying to install a $TYPE type to an existing $DOCKER_SWARM_TYPE type DANGER! DANGER! DANGER! Over and Out"
+	exit 1;
+ fi
+ if [ "$DOCKER_SWARM_ENV" == "$ENV" ]; then
+	echo "Existing environment $DOCKER_SWARM_ENV and requested $ENV environment are identical, we can go on ....";
 	else
 	echo "You are triying to install a $ENV environment to an existing $DOCKER_SWARM_TYPE environment DANGER! DANGER! DANGER! Over and Out"
 	exit 1;
  fi
 fi
+#Set DEFAULT SUBENV
+if [ "$DOCKER_SWARM_ENV" = "PRODSTAGE" ]; then 
+	echo "DOCKER_SWARM_SUBENV=STAGE" >> /etc/environment
+if [ "$DOCKER_SWARM_ENV" = "DEVTEST" ]; then 
+	echo "DOCKER_SWARM_SUBENV=TEST" >> /etc/environment
 
+#Set environement varaibles 
+for env in $( cat /etc/environment ); do export $(echo $env | sed -e 's/"//g'); done
+	
 apt update > /dev/null 2>&1
 
 echo "let's install git, curl and sudo"
