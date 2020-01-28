@@ -151,13 +151,14 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 			5ufqco634dq43usqulgnfvkb *	docker_master_001.bpmspace.net	Ready	Active		Leader		19.03.5
 			vmk88y5o17q654b6az8l9p8x	docker_node_001.bpmspace.net	Ready	Active				19.03.5
 			in0o2qh9iv8342ggzxcxiw15	docker_node_002.bpmspace.net	Ready	Active				19.03.5
-	3) echo -n password | docker secret create portainer-admin-pass -
-		(see https://github.com/portainer/portainer/issues/2816)
-	4) sudo docker stack deploy -c /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/management/portainer/docker-compose.yml Portainer
-	5) DOCKER SECRET NOT WORKING AT THE MOMENT WITH PORTAINER - so set passwd for user admin after the first start
+	3) sudo docker stack deploy -c /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/management/portainer/docker-compose.yml Portainer
 
 ### STEP IV  A - setup Portainer PROD in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
+![Portainer](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_Portainer_initial_admin.png "Portainer Initial Admin")
+  
+![Portainer](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_Portainer_initial_endpoint.png "Portainer Initial Admin")
+  
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `NOTE:`The Stack "Portainer" has do be added a second time. Only then portainer can be fully controlde by Portainer.
 
 > Name:	Portainer  
