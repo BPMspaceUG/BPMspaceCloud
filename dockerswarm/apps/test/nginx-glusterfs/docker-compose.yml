@@ -11,7 +11,7 @@ services:
     hostname: TEST_nginx-glusterfs
     #command: "chown -R nginx /usr/share/nginx/html/*"
     volumes:
-      - /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/apps/test/nginx-glusterfs/index.pho:/var/www/index.php
+      - /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/apps/test/nginx-glusterfs/index.php:/var/www/index.php
     deploy:
       labels:
         - traefik.enable=true
