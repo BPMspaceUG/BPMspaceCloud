@@ -14,4 +14,4 @@ gluster volume create gluster_bpmspacecloud_nodes \
 		$NODE001IP:/gluster/bricks/$NODE001NAME/brick2 \
 		$NODE002IP:/gluster/bricks/$NODE002NAME/brick2
 gluster volume start gluster_bpmspacecloud_nodes
-gluster volume set gluster_bpmspacecloud auth.allow $NODE001NAME,$NODE002NAME
+gluster volume set gluster_bpmspacecloud auth.allow $NODE001IP,$NODE002IP

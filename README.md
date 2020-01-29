@@ -42,10 +42,19 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 	4) mkfs.xfs /dev/sdX  
 	5) /root/BPMspaceCloud/bpmspace_step_04_01_gluster.sh sdX
 	
-### STEP II -for a Multi HOST Docker Swarm- ssh ONLY on NODE_001 - login as rootmessages
+### STEP II -for a Multi HOST Docker Swarm - ssh ONLY on NODE_001 - login as rootmessages
 
 	1) sudo su root
 	2) /root/BPMspaceCloud/bpmspace_step_04_02_gluster.sh
+	
+### STEP III -for a Multi HOST Docker Swarm - ssh to each NODE  - login as rootmessages
+
+	1) sudo su root
+	2) /root/BPMspaceCloud/bpmspace_step_04_03_gluster.sh
+	
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	
 	
 	gluster peer probe <IP@NODE001>
 	   gluster peer probe <IP@NODE002>
