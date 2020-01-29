@@ -4,7 +4,7 @@ set -e  # Stop execution of this script when an error occurs
 #
 #
 #-------------------------------------------------------------------
-# Install script for MITSM standard Linux server setup
+# Install script for BPMspace standard Linux server setup
 #
 # if you want to have a log of all stuff, please call the script as following:
 #
