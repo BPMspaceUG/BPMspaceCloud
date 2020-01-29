@@ -21,7 +21,6 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	8) /root/BPMspaceCloud/bpmspace_step_02_checkglobalvar.sh
 	9) reboot
 
-
 ## INSTALL & CONFIG on each NODE - login as root
 	1) /root/BPMspaceCloud/bpmspace_step_02_checkglobalvar.sh
 	2) /root/BPMspaceCloud/bpmspace_step_03_install.sh
