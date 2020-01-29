@@ -22,7 +22,7 @@ mkdir -p /gluster/bricks/
 mkdir -p /gluster/bricks/$DOCKERHOSTNAME
 mkdir -p /gluster/bricks/$DOCKERHOSTNAME/brick
 mkdir -p /gluster/bricks/$DOCKERHOSTNAME/brick2
-echo '/dev/$DISK /gluster/bricks/$DOCKERHOSTNAME xfs defaults 0 0' >> /etc/fstab
+echo '/dev/$DISK /gluster/bricks/'$DOCKERHOSTNAME' xfs defaults 0 0' >> /etc/fstab
 mount -a
 echo " "
 df -h  
