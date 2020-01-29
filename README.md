@@ -15,17 +15,15 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	2) apt install -y git curl sudo
 	3) git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
 	4) nano /root/BPMspaceCloud/bpmspace_step_01_setglobalvar.sh
-	5) chmod +x /root/BPMspaceCloud/*.sh
+	5) chmod u+x /root/BPMspaceCloud/*.sh
 	6) /root/BPMspaceCloud/bpmspace_step_01_setglobalvar.sh
 	7) /root/BPMspaceCloud/bpmspace_step_02_checkglobalvar.sh
 	8) reboot
-	7) /root/BPMspaceCloud/bpmspace_step_02_checkglobalvar.sh
-
-## INSTALL on each NODE - login as root
 
 
-
-
+## INSTALL & CONFIG on each NODE - login as root
+	1) /root/BPMspaceCloud/bpmspace_step_02_checkglobalvar.sh
+	2) /root/BPMspaceCloud/bpmspace_step_03_install.sh
 
 ## ClusterFS Initial Setup 
 ### STEP I - ssh to docker_master_001, docker_node_001 AND docker_node_002 - login as root

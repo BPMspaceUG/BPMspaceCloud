@@ -14,22 +14,22 @@ id -u rootmessages &>/dev/null || adduser rootmessages sudo
 echo " "
 echo "UPDATE, UPGRADE and INSTALL"
 echo " "
-apt update > /dev/null 2>&1
-apt upgrade > /dev/null 2>&1
-apt dist-upgrade -y > /dev/null 2>&1
-apt install -y cron-apt > /dev/null 2>&1
-apt install -y xfsprogs > /dev/null 2>&1
-apt install -y glusterfs-server > /dev/null 2>&1
-apt install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common > /dev/null 2>&1
+apt update 
+apt upgrade 
+apt dist-upgrade -y 
+apt install -y cron-apt 
+apt install -y xfsprogs 
+apt install -y glusterfs-server 
+apt install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common 
 
 echo " "
 echo "install docker"
 echo " "
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-apt update > /dev/null 2>&1
-apt upgrade -y > /dev/null 2>&1
-apt install -y docker-ce > /dev/null 2>&1
+apt update 
+apt upgrade -y 
+apt install -y docker-ce 
 usermod -aG docker rootmessages
 
 echo " "
@@ -74,6 +74,7 @@ echo " "
 echo "adding iptables script to /etc/rc.local"
 echo " "
 echo "#!/bin/sh -e" > /etc/rc.local
+echo "for env in \$( cat /etc/environment ); do export \$(echo $env | sed -e 's/\"//g'); done" >>/etc/rc.local
 echo "/opt/iptables.sh" >>/etc/rc.local
 echo "exit 0" >> /etc/rc.local
 cp /root/BPMspaceCloud/dockerhost/iptables/iptables.sh /opt
