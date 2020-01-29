@@ -17,8 +17,9 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	4) nano /root/BPMspaceCloud/bpmspace_step_01_setglobalvar.sh
 	5) chmod u+x /root/BPMspaceCloud/*.sh
 	6) /root/BPMspaceCloud/bpmspace_step_01_setglobalvar.sh
-	7) /root/BPMspaceCloud/bpmspace_step_02_checkglobalvar.sh
-	8) reboot
+	7) for env in $( cat /etc/environment ); do export $(echo $env | sed -e 's/"//g'); done
+	8) /root/BPMspaceCloud/bpmspace_step_02_checkglobalvar.sh
+	9) reboot
 
 
 ## INSTALL & CONFIG on each NODE - login as root
@@ -26,7 +27,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	2) /root/BPMspaceCloud/bpmspace_step_03_install.sh
 
 ## ClusterFS Initial Setup 
-### STEP I - ssh to docker_master_001, docker_node_001 AND docker_node_002 - login as root
+### STEP I - ssh to each NODE  - login as rootmessages
 
 Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
 
@@ -38,28 +39,15 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 
 	1) sudo su root  
 	2) lsblk  
-	3) apt install xfsprogs -y  
 	4) mkfs.xfs /dev/sdX  
-	5) apt install -y glusterfs-server  
-	6) systemctl start glusterfs-server  
-	5) mkdir /gluster/  
-	6) mkdir /gluster/bricks/  
-	7) mkdir /gluster/bricks/node_00Y  OR  
-	   mkdir /gluster/bricks/master_00X  
-	8) echo '/dev/sdX /gluster/bricks/node_00Y xfs defaults 0 0' >> /etc/fstab  OR  
-	   echo '/dev/sdX /gluster/bricks/master_00X xfs defaults 0 0' >> /etc/fstab  OR  
-	9) mount -a  
-	10) mkdir /gluster/bricks/node_00Y/brick  OR  
-	    mkdir /gluster/bricks/master_00X/brick  OR  
-	11) df -h  
-	12) sudo systemctl enable glusterfs-server  
-	14) reboot  
-
-	REPEAT for docker_node_001 AND docker_node_002  
+	5) /root/BPMspaceCloud/bpmspace_step_04_01_gluster.sh sdX
 	
-### STEP II.A -for a Multi HOST Docker Swarm- ssh to docker_master_001 - login as root
+### STEP II -for a Multi HOST Docker Swarm- ssh ONLY on NODE_001 - login as rootmessages
 
-	1) gluster peer probe <IP@NODE001>
+	1) sudo su root
+	2) /root/BPMspaceCloud/bpmspace_step_04_02_gluster.sh
+	
+	gluster peer probe <IP@NODE001>
 	   gluster peer probe <IP@NODE002>
 		Reply: peer probe: success.
 	2) gluster pool list
