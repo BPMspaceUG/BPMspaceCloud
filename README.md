@@ -25,10 +25,9 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	1) /root/BPMspaceCloud/bpmspace_step_02_checkglobalvar.sh
 	2) /root/BPMspaceCloud/bpmspace_step_03_install.sh
 
-## ClusterFS Initial Setup 
-### STEP I - ssh to each NODE  - login as rootmessages
-
+## ClusterFS Initial Setup - Multi HOST Docker Swarm 
 Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
+### STEP I  - ssh to each NODE  - login as rootmessages
 
 * [using glusterfs docker swarm cluster](http://embaby.com/blog/using-glusterfs-docker-swarm-cluster/)  
 * [setup a 3 node replicated storage volume with glusterfs](https://blog.ruanbekker.com/blog/2019/03/05/setup-a-3-node-replicated-storage-volume-with-glusterfs/?referral=github.com)
@@ -54,36 +53,9 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	
-	
-	gluster peer probe <IP@NODE001>
-	   gluster peer probe <IP@NODE002>
-		Reply: peer probe: success.
-	2) gluster pool list
-		Reply:
-			UUID                                    Hostname        State
-			cd882312-1a34-5ed2-b06c-9b942f19bd90    <IP@NODE002>   Connected
-			ff972510-2b65-4b4f-b06c-9b87abc78d90    <IP@NODE002>   Connected
-			10b30a17-718b-4d92-bf04-6a8320085dd2    localhost       Connected
-	3) gluster volume create gluster_bpmspacecloud \
-		replica 3 \
-		<IP@MASTER001>:/gluster/bricks/master_001/brick \
-		<IP@NODE001>:/gluster/bricks/node_001/brick \
-		<IP@NODE002>:/gluster/bricks/node_002/brick
-		Reply:
-		volume create: gluster_bpmspacecloud: success: please start the volume to access data
-	5) gluster volume start gluster_bpmspacecloud
-		Reply: volume start: gluster_bpmspacecloud: success
-	6) gluster volume status gluster_bpmspacecloud
-	7) gluster volume set gluster_bpmspacecloud auth.allow <IP@MASTER001>,<IP@NODE001>,<IP@NODE002>
-	8) mkdir /mnt/gluster/ -p
-	9) mkdir /mnt/gluster/gluster_bpmspacecloud -p
-	10) echo 'localhost:/gluster_bpmspacecloud /mnt/gluster/gluster_bpmspacecloud glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab
-	11) mount -a
-	12) cd /mnt/gluster/gluster_bpmspacecloud/gluster_bpmspacecloud
-	13) apt install git -y
-	13) git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
-	
-### STEP II.B -for a SINGLE HOST Cluster- ssh to devtest.bpmspace.net - login as root
+## ClusterFS FAKE Initial Setup - SINGLE HOST Docker Swarm 
+Note: NOT Needed for a MULTI HOST Docker Swarm ! e.g. PRODSTAGE Environment  
+### STEP I  - ssh to each NODE  - login as rootmessages
 	1) mkdir /mnt/gluster/ -p
 	2) mkdir /mnt/gluster/gluster_bpmspacecloud -p
 	2) mkdir /mnt/gluster/gluster_bpmspacecloud_nodes -p
@@ -91,28 +63,6 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 	4) apt install git -y
 	5) git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
 
-### STEP III - ssh to docker_node_001 OR docker_node_002 - login as root
-Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
-
-	1) mkdir /gluster/bricks/node_00Y/brick2
-	2) gluster volume create gluster_bpmspacecloud_nodes \
-		replica 2 \
-		<IP@NODE001>:/gluster/bricks/node_001/brick \
-		<IP@NODE002>:/gluster/bricks/node_002/brick
-	3) gluster volume start gluster_bpmspacecloud_nodes
-	4) gluster volume set gluster_bpmspacecloud auth.allow <IP@NODE001>,<IP@NODE002>
-	
-### STEP IV - ssh to docker_node_001 AND docker_node_002 - login as root
-Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
-
-	1) sudo su root  
-	2) mkdir /mnt/gluster/ -p  
-	3) mkdir /mnt/gluster/gluster_bpmspacecloud -p  
-	3) mkdir /mnt/gluster/gluster_bpmspacecloud_nodes -p  
-	4) echo 'localhost:/gluster_bpmspacecloud /mnt/gluster/gluster_bpmspacecloud glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab  
-	5) echo 'localhost:/gluster_bpmspacecloud_nodes /mnt/gluster/gluster_bpmspacecloud_nodes glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab  
-	6) mount -a  
-	7) df -h  
 
 ## DockerHosts Initial Setup
 ### ssh to docker_master_001 OR devtest.bpmspace.net - login as root 
