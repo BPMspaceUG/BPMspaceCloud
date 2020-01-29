@@ -13,9 +13,15 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 ## Initial Setup on each NODE - login as root
 	1) apt update && apt upgrade 
 	2) apt install -y git curl sudo
-	3) 
+	3) git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
+	4) nano /root/BPMspaceCloud/bpmspace_step_01_setglobalvar.sh
+	5) chmod +x /root/BPMspaceCloud/*.sh
+	6) /root/BPMspaceCloud/bpmspace_step_01_setglobalvar.sh
+	7) /root/BPMspaceCloud/bpmspace_step_02_checkglobalvar.sh
+	8) reboot
+	7) /root/BPMspaceCloud/bpmspace_step_02_checkglobalvar.sh
 
-
+## INSTALL on each NODE - login as root
 
 
 
