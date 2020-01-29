@@ -50,9 +50,6 @@ Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment
 	1) sudo su root
 	2) /root/BPMspaceCloud/bpmspace_step_04_03_gluster.sh
 	
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-	
 ## ClusterFS FAKE Initial Setup - SINGLE HOST Docker Swarm 
 Note: NOT Needed for a MULTI HOST Docker Swarm ! e.g. PRODSTAGE Environment  
 ### STEP I  - ssh to each NODE  - login as rootmessages
