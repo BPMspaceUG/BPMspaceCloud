@@ -11,5 +11,6 @@ if [ "$DOCKER_SWARM_TYPE" == "NODE" ]; then
 	mkdir /mnt/gluster/gluster_bpmspacecloud_nodes -p
 	echo 'localhost:/gluster_bpmspacecloud_nodes /mnt/gluster/gluster_bpmspacecloud_nodes glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab  
 fi
+rm -rf /root/BPMspaceCloud
 mount -a
 df -h  
