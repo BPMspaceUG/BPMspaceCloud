@@ -26,13 +26,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	2) /root/BPMspaceCloud/bpmspace_step_03_install.sh
 
 ## ClusterFS Initial Setup - Multi HOST Docker Swarm 
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
-
-* [using glusterfs docker swarm cluster](http://embaby.com/blog/using-glusterfs-docker-swarm-cluster/)  
-* [setup a 3 node replicated storage volume with glusterfs](https://blog.ruanbekker.com/blog/2019/03/05/setup-a-3-node-replicated-storage-volume-with-glusterfs/?referral=github.com)
-* [setup 3 node high-availability-cluster with glusterfs and docker swarm](https://medium.com/running-a-software-factory/setup-3-node-high-availability-cluster-with-glusterfs-and-docker-swarm-b4ff80c6b5c3)
-
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Setup a 3 Node GlusterFS on the Swarm Master and 2 Swarm workers
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Note: NOT Needed for a SINGLE HOST Docker Swarm!
 
 ### STEP I  - ssh to each Cluster Member  - login as rootmessages
 	1) sudo su root  
@@ -51,7 +45,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	2) /root/BPMspaceCloud/bpmspace_step_04_03_gluster.sh
 	
 ## ClusterFS FAKE Initial Setup - SINGLE HOST Docker Swarm 
-Note: NOT Needed for a MULTI HOST Docker Swarm ! e.g. PRODSTAGE Environment  
+Note: NOT Needed for a MULTI HOST Docker Swarm!  
 ### STEP I  - ssh to each Cluster Member  - login as rootmessages
 	1) mkdir /mnt/gluster/ -p
 	2) mkdir /mnt/gluster/gluster_bpmspacecloud -p
