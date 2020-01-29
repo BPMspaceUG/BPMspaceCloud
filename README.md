@@ -11,11 +11,10 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 - devtest.bpmspace.net
 
 ## Initial Setup on each NODE - login as root
-	1) apt update > /dev/null 2>&1 && apt upgrade > /dev/null
+	1) apt update && apt upgrade 
 	2) apt install -y git curl sudo
 	3) 
 
-echo "let's install git, curl and sudo"
 
 
 
