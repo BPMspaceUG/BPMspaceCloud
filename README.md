@@ -95,7 +95,7 @@ In /mnt/gluster/gluster_bpmspacecloud/certs/ are valid certs
 	
 	1) sudo git -C /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/ pull  
 	2) sudo docker stack deploy -c /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/management/portainer/docker-compose.yml Portainer  
-	3) https:/portainer.bpmspace.net:8880 (assumption: In the DNS a forward "IN A *.$DOCKERDOMAIN (wildcard) to $MASTER001IP" is configured )  
+	3) https:/portainer.bpmspace.net:8880  
 	
 ![Portainer](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_Portainer_initial_admin.png "Portainer Initial Admin")
   
