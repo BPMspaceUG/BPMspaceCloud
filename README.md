@@ -2,9 +2,9 @@
 
 ### Prerequisites for MULTI Host Docker Swarm and Gluster
 Linux server with DEBIAN 9 (Stretch) and ssh access and named:
-- docker_master_001.bpmspace.net
-- docker_node_001.bpmspace.net
-- docker_node_002.bpmspace.net
+- docker_master_001.bpmspace.net (e.g. for $MASTER001NAME)
+- docker_node_001.bpmspace.net(e.g. for $NODE001NAME)
+- docker_node_002.bpmspace.net(e.g. for $NODE002NAME)
 
 ### Prerequisites for SINGLE Host Docker Swarm without Gluster
 Linux server with DEBIAN 9 (Stretch) and ssh access and named:
@@ -65,7 +65,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 
 ### STEP I - ssh to docker_master_001 OR OR devtest.bpmspace.net - login as rootmessages
 
-	sudo /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/scripts/bpmspace_initiate_dockerswarm.sh $MASTER001IP 
+	sudo /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_step_05_dockerswarm.sh $MASTER001IP 
 	
 ### STEP II - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
 
@@ -86,13 +86,18 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 			5ufqco634dq43usqulgnfvkb *	docker_master_001.bpmspace.net	Ready	Active		Leader		19.03.5
 			vmk88y5o17q654b6az8l9p8x	docker_node_001.bpmspace.net	Ready	Active				19.03.5
 			in0o2qh9iv8342ggzxcxiw15	docker_node_002.bpmspace.net	Ready	Active				19.03.5
-	3) sudo docker stack deploy -c /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/management/portainer/docker-compose.yml Portainer
+
 
 ### STEP IV  A - setup Portainer PROD in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
+	1) sudo docker stack deploy -c /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/management/portainer/docker-compose.yml Portainer
+	2) https:/portainer.bpmspace.net:8880 (assumption: In the DNS a forward "IN A *.$DOCKERDOMAIN (wildcard) to $MASTER001IP" is configured )
+	
 ![Portainer](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_Portainer_initial_admin.png "Portainer Initial Admin")
   
 ![Portainer](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_Portainer_initial_endpoint.png "Portainer Initial Admin")
+
+
   
 ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `NOTE:`The Stack "Portainer" has do be added a second time. Only then portainer can be fully controlde by Portainer.
 
