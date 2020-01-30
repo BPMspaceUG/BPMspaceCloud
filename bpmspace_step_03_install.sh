@@ -74,7 +74,7 @@ echo " "
 echo "adding iptables script to /etc/rc.local"
 echo " "
 echo "#!/bin/sh -e" > /etc/rc.local
-echo "for env in \$( cat /etc/environment ); do export \$(echo $env | sed -e 's/\"//g'); done" >>/etc/rc.local
+echo "for env in \$( cat /etc/environment ); do export \$env; done">>/etc/rc.local
 echo "/opt/iptables.sh" >>/etc/rc.local
 echo "exit 0" >> /etc/rc.local
 cp /root/BPMspaceCloud/dockerhost/iptables/iptables.sh /opt
