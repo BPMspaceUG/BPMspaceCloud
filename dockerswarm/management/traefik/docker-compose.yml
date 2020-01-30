@@ -34,8 +34,9 @@ services:
         labels:
           - traefik.enable=true
           - traefik.http.routers.traefikRouter.rule=Host(`traefik.bpmspace.net`)
-          - traefik.http.routers.traefikRouter.tls=true
-          - traefik.http.routers.traefikRouter.entrypoints=websecure
+          #- traefik.http.routers.traefikRouter.tls=true
+          #- traefik.http.routers.traefikRouter.entrypoints=websecure
+          - traefik.http.routers.traefikRouter.entrypoints=web
           - traefik.http.routers.traefikRouter.service=api@internal
           - traefik.http.routers.traefikRouter.middlewares=dshbrd-auth
           - traefik.http.middlewares.dshbrd-auth.basicauth.users=rootmessages:$$apr1$$G4tOTTMW$$limDBQWcCnVhwHEHkhAim1
