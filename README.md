@@ -90,8 +90,9 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 
 ### STEP IV  A - setup Portainer PROD in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
-	1) sudo docker stack deploy -c /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/management/portainer/docker-compose.yml Portainer
-	2) https:/portainer.bpmspace.net:8880 (assumption: In the DNS a forward "IN A *.$DOCKERDOMAIN (wildcard) to $MASTER001IP" is configured )
+	1) sudo git -C /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/ pull  
+	2) sudo docker stack deploy -c /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/management/portainer/docker-compose.yml Portainer  
+	3) https:/portainer.bpmspace.net:8880 (assumption: In the DNS a forward "IN A *.$DOCKERDOMAIN (wildcard) to $MASTER001IP" is configured )  
 	
 ![Portainer](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/PORTAINER_SETUP_STACK_Portainer_initial_admin.png "Portainer Initial Admin")
   
