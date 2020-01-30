@@ -47,27 +47,13 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 ## ClusterFS FAKE Initial Setup - SINGLE HOST Docker Swarm 
 Note: NOT Needed for a MULTI HOST Docker Swarm!  
 ### STEP I  - ssh to each Cluster Member  - login as rootmessages
-	1) mkdir /mnt/gluster/ -p
-	2) mkdir /mnt/gluster/gluster_bpmspacecloud -p
-	2) mkdir /mnt/gluster/gluster_bpmspacecloud_nodes -p
-	3) cd /mnt/gluster/gluster_bpmspacecloud
-	4) apt install git -y
-	5) git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
-
-
-## DockerHosts Initial Setup
-### ssh to docker_master_001 OR devtest.bpmspace.net - login as root 
->/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh MASTER docker_master_001.bpmspace.net  
-OR  
->/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh MASTER devtest.bpmspace.net  
-
-### ssh to docker_node_001 (WORKER) - login as root
-Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
->/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_001.bpmspace.net
-
-### ssh to docker_node_002 (WORKER) - login as root
-Note: NOT Needed for a SINGLE HOST Docker Swarm ! e.g. DEVTEST Environment  
->/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_setup_dockerhost_stretch.sh WORKER docker_node_002.bpmspace.net
+	1) udo su root
+	2) mkdir /mnt/gluster/ -p
+	3) mkdir /mnt/gluster/gluster_bpmspacecloud -p
+	4) mkdir /mnt/gluster/gluster_bpmspacecloud_nodes -p
+	5) cd /mnt/gluster/gluster_bpmspacecloud
+	6) apt install git -y
+	7) git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
 
 ## DockerSwarm Initial Setup
 
@@ -79,14 +65,11 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 
 ### STEP I - ssh to docker_master_001 OR OR devtest.bpmspace.net - login as rootmessages
 
-	sudo /gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/scripts/bpmspace_initiate_dockerswarm.sh <IP@MASTER>
-	OR
-	sudo /gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/scripts/bpmspace_initiate_dockerswarm.sh <IP@DEVTEST>
-	
+	sudo /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/scripts/bpmspace_initiate_dockerswarm.sh $MASTER001IP 
 	
 ### STEP II - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
 
-	docker swarm join --token <TOKEN FROM STEP I-4>  <IP@MASTER>:2377
+	sudo docker swarm join --token <TOKEN FROM STEP I-4>  <IP@MASTER>:2377 ..
 	
 ### STEP III - ssh to docker_master_001 - login as rootmessages
 	1)TEST network
