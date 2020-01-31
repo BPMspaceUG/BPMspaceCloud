@@ -22,7 +22,10 @@ iptables -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 2376 -j ACCEPT
 iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 2377 -j ACCEPT
 iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 7946 -j ACCEPT
+iptables -A INPUT -p udp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 7946 -j ACCEPT
 iptables -A INPUT -p udp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 4789 -j ACCEPT
+iptables -A INPUT -i docker_gwbridge -p tcp -m multiport --dports 2376,2377,7946 -j ACCEPT
+iptables -A INPUT -i docker_gwbridge -p udp -m multiport --dports 7946,4789 -j ACCEPT
 #GlusterFS
 iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 24007:24008 -j ACCEPT
 iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 49152:49156 -j ACCEPT

@@ -65,7 +65,8 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 
 ### STEP I - ssh to docker_master_001 OR OR devtest.bpmspace.net - login as rootmessages
 
-	sudo /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_step_05_01_dockerswarm.sh $MASTER001IP 
+	sudo /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_step_05_01_dockerswarm.sh $MASTER001IP
+	
 	
 ### STEP II - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
 
