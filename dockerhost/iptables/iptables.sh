@@ -36,7 +36,7 @@ iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERPORTAINERIP --dport 2376
 #iptables -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
 
 # Verstoesse werden protokolliert
-# iptables -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+iptables -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
 
 # any - any - deny Regel fuer INPUT und FORWARD chain
 iptables -A INPUT -j REJECT

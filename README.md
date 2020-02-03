@@ -46,7 +46,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	
 ## ClusterFS FAKE Initial Setup - SINGLE HOST Docker Swarm 
 Note: NOT Needed for a MULTI HOST Docker Swarm!  
-### STEP - ssh to each Single HOST  - login as rootmessages
+### STEP - ssh to Single HOST  - login as rootmessages
 	1) udo su root
 	2) mkdir /mnt/gluster/ -p
 	3) mkdir /mnt/gluster/gluster_bpmspacecloud -p
@@ -179,3 +179,6 @@ In /mnt/gluster/gluster_bpmspacecloud/certs/ are valid certs
 > Compose path: /dockerswarm/apps/test/TEST_nginx-glusterfs/  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST https://test_nginx-glusterfs.bpmspace.net/  
 > ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST BASH: for ((n=0;n<1000000;n++));do printf "\033c"; echo "+++++++"; for ((m=0;m<5;m++)); do curl test_nginx-glusterfs.bpmspace.net; echo "-----"; done; sleep 3; done
+
+### STEP 00 - RESET system - incl volumes ![#FF0000](https://placehold.it/15/FF0000/000000?text=+) !!!! DANGER !!! ![#FF0000](https://placehold.it/15/FFA500/000000?text=+)
+docker container stop $(docker container ls -aq) && docker system prune --volumes &&  docker network create --driver=overlay --attachable cloud-net && docker network create --driver=overlay --attachable proxy-net && docker network ls | grep overlay
