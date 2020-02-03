@@ -46,7 +46,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	
 ## ClusterFS FAKE Initial Setup - SINGLE HOST Docker Swarm 
 Note: NOT Needed for a MULTI HOST Docker Swarm!  
-### STEP I  - ssh to each Cluster Member  - login as rootmessages
+### STEP - ssh to each Single HOST  - login as rootmessages
 	1) udo su root
 	2) mkdir /mnt/gluster/ -p
 	3) mkdir /mnt/gluster/gluster_bpmspacecloud -p
