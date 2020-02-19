@@ -20,11 +20,11 @@ services:
       --api.dashboard=true
      ports:
        - 80:80
-       - 443:443
+       #- 443:443
        - 8080:8080
      volumes:
        - /var/run/docker.sock:/var/run/docker.sock
-       - /var/cert:/certs/
+       #- /var/cert:/certs/
        - /home/rootmessages/BPMspaceCloud/dockerswarm/management/traefik/config:/config/
      deploy:
         mode: global
