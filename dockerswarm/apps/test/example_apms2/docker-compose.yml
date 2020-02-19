@@ -1,0 +1,139 @@
+version: '3.7'
+
+networks:
+ proxy-net:
+   external: true
+   
+volumes:
+  EXAMPLE_mariadb10:
+  EXAMPLE_liam3_mariadb10:
+  EXAMPLE_liam3_server:
+  EXAMPLE_server:
+
+services:
+
+  EXAMPLE_mariadb10:
+    image: mariadb:10.4.8
+    hostname: EXAMPLE_mariadb10
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+    - EXAMPLE_mariadb10:/var/lib/mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=test
+    - MYSQL_DATABASE=test
+    - MYSQL_USER=test
+    - MYSQL_PASSWORD=test
+    deploy:
+      placement:
+        constraints:
+          - node.role == worker
+    networks:
+      - proxy-net 
+
+  EXAMPLE_liam3_mariadb10:
+    image: mariadb:10.4.8
+    hostname: EXAMPLE_liam3_mariadb10
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+    - EXAMPLE_liam3_mariadb10:/var/lib/mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=test
+    - MYSQL_DATABASE=test
+    - MYSQL_USER=test
+    - MYSQL_PASSWORD=test
+    deploy:
+      placement:
+        constraints:
+          - node.role == worker
+    networks:
+      - proxy-net 
+
+  EXAMPLE_phpmyadmin-mariadb:
+    image: phpmyadmin/phpmyadmin:4.8.5
+    hostname: EXAMPLE_phpmyadmin_mariadb10
+    depends_on:
+    - EXAMPLE_mariadb10
+    environment:
+    - PMA_HOST=EXAMPLE_mariadb10
+    - PMA_PORT=3306
+    - PMA_USER=test
+    - PMA_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.EXAMPLE_phpmyadmin-mariadb.rule=Host(`EXAMPLE_phpmyadmin_mariadb10.bpmspace.net`)
+        - traefik.http.services.EXAMPLE_phpmyadmin-mariadb-service.loadbalancer.server.port=80
+      placement:
+        constraints:
+          - node.role == worker
+    networks:
+      - proxy-net 
+
+  EXAMPLE_liam3_phpmyadmin-mariadb:
+    image: phpmyadmin/phpmyadmin:4.8.5
+    hostname: EXAMPLE_liam3_phpmyadmin_mariadb10
+    depends_on:
+    - EXAMPLE_liam3_mariadb10
+    environment:
+    - PMA_HOST=EXAMPLE_liam3_mariadb10
+    - PMA_PORT=3306
+    - PMA_USER=test
+    - PMA_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.EXAMPLE_liam3_phpmyadmin-mariadb.rule=Host(`EXAMPLE_liam3_phpmyadmin_mariadb10.bpmspace.net`)
+        - traefik.http.services.EXAMPLE_liam3_phpmyadmin-mariadb-service.loadbalancer.server.port=80
+      placement:
+        constraints:
+          - node.role == worker
+    networks:
+      - proxy-net
+      
+  EXAMPLE_liam3_server:
+    image: bpmspace/liam3:liam3_master-production_server_master
+    hostname: EXAMPLE_liam3_server
+    volumes:
+    - EXAMPLE_liam3_server:/var/www/html
+    depends_on:
+    - EXAMPLE_liam3_mariadb10
+    environment:
+    - DB_HOST=EXAMPLE_liam3_mariadb10
+    - DB_PORT=3306
+    - DB_USER=test
+    - DB_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.EXAMPLE_liam3_server.rule=Host(`EXAMPLE_liam3_server.bpmspace.net`)
+        - traefik.http.services.EXAMPLE_liam3_server-service.loadbalancer.server.port=80
+      placement:
+        constraints:
+          - node.role == worker
+    networks:
+      - proxy-net
+
+  EXAMPLE_server:
+    image: bpmspace/[REPLACEIMAGE]
+    hostname: EXAMPLE_server
+    volumes:
+    - EXAMPLE_liam3_server:/var/www/html
+    depends_on:
+    - EXAMPLE_mariadb10
+    environment:
+    - DB_HOST=EXAMPLE_mariadb10
+    - DB_PORT=3306
+    - DB_USER=test
+    - DB_PASSWORD=test
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.EXAMPLE_server.rule=Host(`EXAMPLE_server.bpmspace.net`)
+        - traefik.http.services.EXAMPLE_server-service.loadbalancer.server.port=80
+      placement:
+        constraints:
+          - node.role == worker
+    networks:
+      - proxy-net

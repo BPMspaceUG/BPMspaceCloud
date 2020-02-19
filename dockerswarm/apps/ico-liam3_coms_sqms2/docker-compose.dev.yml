@@ -6,8 +6,6 @@ networks:
    
 volumes:
   TEST_mariadb10:
-  TEST_mysql5:
-  TEST_mysql8:
    
 services:
 
