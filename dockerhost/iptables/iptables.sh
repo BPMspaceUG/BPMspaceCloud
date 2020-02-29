@@ -18,6 +18,11 @@ iptables -A OUTPUT -j ACCEPT
 
 # ssh/22 ist erlaubt
 iptables -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
+iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 22 -j ACCEPT
+
+# 9001 portainer 
+iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 9001 -j ACCEPT
+
 # docker SWARM
 iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 2376 -j ACCEPT
 iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 2377 -j ACCEPT
@@ -31,6 +36,7 @@ iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 24
 iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERHOSTCLUSTERIP --dport 49152:49156 -j ACCEPT
 #Docker-API from Portainer
 iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERPORTAINERIP --dport 2376 -j ACCEPT
+iptables -A INPUT -p tcp -m state --state NEW -s $DOCKERPORTAINERIP --dport 2377 -j ACCEPT
 
 # falls man mal ICMP zulassen will
 #iptables -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
