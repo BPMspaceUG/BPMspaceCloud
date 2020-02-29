@@ -2,9 +2,9 @@
 
 ### Prerequisites for MULTI Host Docker Swarm and Gluster
 Linux server with DEBIAN 9 (Stretch) and ssh access and named:
-- docker_master_001.bpmspace.net (e.g. for $MASTER001NAME)
-- docker_node_001.bpmspace.net(e.g. for $NODE001NAME)
-- docker_node_002.bpmspace.net(e.g. for $NODE002NAME)
+- docker-master-001.bpmspace.net (e.g. for $MASTER001NAME)
+- docker-node-001.bpmspace.net(e.g. for $NODE001NAME)
+- docker-node-002.bpmspace.net(e.g. for $NODE002NAME)
 
 ### Prerequisites for SINGLE Host Docker Swarm without Gluster
 Linux server with DEBIAN 9 (Stretch) and ssh access and named:
@@ -63,16 +63,16 @@ _Imixs-Cloud_ is an open infrastructure project, providing a lightweight [docker
 The _Imixs-Cloud_ is based on a [docker swarm](https://docs.docker.com/engine/swarm/) cluster environment.
 Docker swarm is much easier to setup and in its management compared to a Kubernetes cluster. However, when deciding which platform  to use, you should consider your own criterias. _Imixs-Cloud_ is optimized to **build**, **run** and **maintain** business services in small and medium-sized enterprises.
 
-### STEP I - ssh to docker_master_001 OR OR devtest.bpmspace.net - login as rootmessages
+### STEP I - ssh to docker-master-001 OR OR devtest.bpmspace.net - login as rootmessages
 
 	sudo /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_step_05_01_dockerswarm.sh $MASTER001IP
 	
 	
-### STEP II - ssh to docker_node_001 AND docker_node_002 - login as rootmessages
+### STEP II - ssh to docker-node-001 AND docker-node-002 - login as rootmessages
 
 	sudo docker swarm join --token <TOKEN FROM STEP I-4>  <IP@MASTER>:2377 ..
 	
-### STEP III - ssh to docker_master_001 - login as rootmessages
+### STEP III - ssh to docker-master-001 - login as rootmessages
 	1)TEST network
 		docker network ls | grep overlay
 		Output should look like
@@ -84,9 +84,9 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 		docker node ls
 		Output should look like
 			ID				HOSTNAME			STATUS	AVAILABILITY	MANAGER STATUS	ENGINE VERSION
-			5ufqco634dq43usqulgnfvkb *	docker_master_001.bpmspace.net	Ready	Active		Leader		19.03.5
-			vmk88y5o17q654b6az8l9p8x	docker_node_001.bpmspace.net	Ready	Active				19.03.5
-			in0o2qh9iv8342ggzxcxiw15	docker_node_002.bpmspace.net	Ready	Active				19.03.5
+			5ufqco634dq43usqulgnfvkb *	docker-master-001.bpmspace.net	Ready	Active		Leader		19.03.5
+			vmk88y5o17q654b6az8l9p8x	docker-node-001.bpmspace.net	Ready	Active				19.03.5
+			in0o2qh9iv8342ggzxcxiw15	docker-node-002.bpmspace.net	Ready	Active				19.03.5
 
 
 ### STEP IV  A - setup Portainer PROD in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
@@ -172,7 +172,7 @@ In /mnt/gluster/gluster_bpmspacecloud/certs/ are valid certs
 
 ### STEP Ix - setup TEST_nginx-glusterfs && Test in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 
-> sudo mkdir -p /mnt/gluster/gluster_bpmspacecloud/TEST_nginx-glusterfs on docker_node_001 or docker_node_002  
+> sudo mkdir -p /mnt/gluster/gluster_bpmspacecloud/TEST_nginx-glusterfs on docker-node-001 or docker-node-002  
   
 > Name:	TEST_nginx-glusterfs  
 > Repository URL:	https://github.com/BPMspaceUG/BPMspaceCloud/  
