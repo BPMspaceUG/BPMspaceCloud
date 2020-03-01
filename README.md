@@ -74,7 +74,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	9) rm /mnt/gluster/gluster_bpmspacecloud/tmp/id_rsa.pub  
 
 			
-## DockerSwarm Initial Setup - ssh to docker-master-001 - login as rootmessages
+## DockerSwarm Initial Setup  
 
 BPMspaceCloud DockerSwarm is based on the Imixs-Cloud - https://github.com/imixs/imixs-cloud
 
