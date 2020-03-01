@@ -64,7 +64,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	1) ssh  rootmessages@$MASTER001NAME
 	2) ssh  rootmessages@$NODE001NAME
 	3) ssh  rootmessages@$NODE002NAME
-	4) cat /etc/ansible/hosts
+	4) nano /etc/ansible/hosts
 	5) ansible -u rootmessages -m command -a "df -h" SwarmMember 
 	6) ansible -u rootmessages -m command -a "df -h" SwarmNode
 	7) ansible -u rootmessages -m command -a "arch" SwarmMember
