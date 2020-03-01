@@ -66,7 +66,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	1) ssh  rootmessages@$MASTER001NAME  
 	2) ssh  rootmessages@$NODE001NAME  
 	3) ssh  rootmessages@$NODE002NAME  
-	4) nano /etc/ansible/hosts  
+	4) sudo nano /etc/ansible/hosts  
 	5) ansible -u rootmessages -m command -a "df -h" SwarmMember  
 	6) ansible -u rootmessages -m command -a "df -h" SwarmNode  
 	7) ansible -u rootmessages -m command -a "arch" SwarmMember  
@@ -74,7 +74,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	9) rm /mnt/gluster/gluster_bpmspacecloud/tmp/id_rsa.pub  
 
 			
-## DockerSwarm Initial Setup
+## DockerSwarm Initial Setup - ssh to docker-master-001 - login as rootmessages
 
 BPMspaceCloud DockerSwarm is based on the Imixs-Cloud - https://github.com/imixs/imixs-cloud
 
@@ -85,22 +85,15 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 ### STEP I - ssh to docker-master-001 - login as rootmessages
 
 	sudo /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_step_05_01_dockerswarm.sh $MASTER001IP
-	
-	
-### STEP II - ssh to docker-node-001 AND docker-node-002 - login as rootmessages
-
-	sudo docker swarm join --token <TOKEN FROM STEP I-4>  <IP@MASTER>:2377 ..
-	
-### STEP III - ssh to docker-master-001 - login as rootmessages
-	1)TEST network
-		docker network ls | grep overlay
+	ansible -u rootmessages -m shell -a "sudo docker swarm join --token <TOKEN FROM STEP I-4>  <IP@MASTER>:2377" SwarmNode  ..
+![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST  
+	1) docker network ls | grep overlay
 		Output should look like
 			NETWORK ID	NAME		DRIVER		SCOPE
 			1q17asdn5z6r	cloud-net	overlay		swarm
 			sadfq830v4fb	ingress		overlay		swarm
 			dzptc459kk30	proxy-net	overlay		swarm
-	2) TEST Swarm 
-		docker node ls
+	2) docker node ls
 		Output should look like
 			ID				HOSTNAME			STATUS	AVAILABILITY	MANAGER STATUS	ENGINE VERSION
 			5ufqco634dq43usqulgnfvkb *	docker-master-001.bpmspace.net	Ready	Active		Leader		19.03.5
