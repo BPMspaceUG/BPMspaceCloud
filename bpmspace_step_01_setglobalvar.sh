@@ -8,7 +8,7 @@
 	# DOCKERDOMAIN
 	echo "DOCKERDOMAIN=bpmspace.net" >> /etc/environment
 	# DOCKERHOSTNAME
-	echo "DOCKERHOSTNAME=master_001.bpmspace.net" >> /etc/environment
+	echo "DOCKERHOSTNAME=docker-master-001."$DOCKERDOMAIN >> /etc/environment
 	# DOCKERHOSTIP
 	echo "DOCKERHOSTIP=<publicIP>" >> /etc/environment
 	# DOCKERHOSTCLUSTERIP
@@ -18,15 +18,15 @@
 	# MASTER001IP
 	echo "MASTER001IP=<publicIP>" >> /etc/environment
 	# MASTER001NAME
-	echo "MASTER001NAME=<HOSTNAME_MASTER_001>" >> /etc/environment
+	echo "MASTER001NAME=docker-master-001."$DOCKERDOMAIN >> /etc/environment
 	# NODE001IP
 	echo "NODE001IP=<publicIP>" >> /etc/environment
 	# NODE001NAME
-	echo "NODE001NAME=<HOSTNAME_NODE_001>" >> /etc/environment
+	echo "NODE001NAME=docker-node-001."$DOCKERDOMAIN >> /etc/environment
 	# NODE002IP
 	echo "NODE002IP=<publicIP>" >> /etc/environment
 	# NODE002NAME
-	echo "NODE002NAME=<HOSTNAME_NODE_002>" >> /etc/environment
+	echo "NODE002NAME=docker-node-001."$DOCKERDOMAIN >> /etc/environment
 
 	#Set environement varaibles 
 for env in $( cat /etc/environment ); do export $(echo $env | sed -e 's/"//g'); done

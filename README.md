@@ -9,7 +9,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 - docker-node-002.$DOCKERDOMAIN(e.g. for $NODE002NAME)
 
 ## Initial Setup on each Cluster Member - login as root
-	1) apt update && apt upgrade 
+	1) apt update -y && apt upgrade -y
 	2) apt install -y git curl sudo
 	3) git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
 	4) nano /root/BPMspaceCloud/bpmspace_step_01_setglobalvar.sh
@@ -44,7 +44,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 ## Ansibel Initial Setup 
 
 	1) sudo su root
-	2) ssh-keygen -t rsa -b 4096 -C "rootmessages@$DOCKERDOMAIN" 
+	2) ssh-keygen -t rsa -b 4096 -C "rootmessages@"$DOCKERDOMAIN 
 	3) ssh-copy-id rootmessages@$MASTER001NAME
 	4) ssh-copy-id rootmessages@$NODE001NAME
 	5) ssh-copy-id rootmessages@$NODE002NAME
