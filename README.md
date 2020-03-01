@@ -82,7 +82,7 @@ _Imixs-Cloud_ is an open infrastructure project, providing a lightweight [docker
 The _Imixs-Cloud_ is based on a [docker swarm](https://docs.docker.com/engine/swarm/) cluster environment.
 Docker swarm is much easier to setup and in its management compared to a Kubernetes cluster. However, when deciding which platform  to use, you should consider your own criterias. _Imixs-Cloud_ is optimized to **build**, **run** and **maintain** business services in small and medium-sized enterprises.
 
-### STEP I - ssh to docker-master-001 - login as rootmessages
+### ssh to docker-master-001 - login as rootmessages
 
 	sudo /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_step_05_01_dockerswarm.sh $MASTER001IP
 	ansible -u rootmessages -m shell -a "sudo docker swarm join --token <TOKEN FROM STEP I-4>  <IP@MASTER>:2377" SwarmNode  ..
@@ -100,8 +100,8 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 			vmk88y5o17q654b6az8l9p8x	docker-node-001.bpmspace.net	Ready	Active				19.03.5
 			in0o2qh9iv8342ggzxcxiw15	docker-node-002.bpmspace.net	Ready	Active				19.03.5
 
-
-### STEP IV  A - setup Portainer PROD in [Portainer Management Console](https:/portainer.bpmspace.net:8880)
+## Portainer Initial Setup - [Portainer Management Console](https:/portainer.bpmspace.net:8880)
+### ssh to docker-master-001 - login as rootmessages  
 Prerequisites:  
 In the DNS a forward "IN A *.$DOCKERDOMAIN (wildcard) to $MASTER001IP" is configured  
 In /mnt/gluster/gluster_bpmspacecloud/certs/ are valid certs
