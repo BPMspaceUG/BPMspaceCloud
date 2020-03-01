@@ -47,20 +47,27 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 
 	1) sudo su root
 	2) ssh-keygen -t rsa -b 4096 -C "rootmessages@"$DOCKERDOMAIN 
-	3) ssh-copy-id rootmessages@$MASTER001NAME
-	4) ssh-copy-id rootmessages@$NODE001NAME
-	5) ssh-copy-id rootmessages@$NODE002NAME
+	3) mkdir /mnt/gluster/gluster_bpmspacecloud/tmp/
+	4) cp .ssh/id_rsa.pub /mnt/gluster/gluster_bpmspacecloud/tmp/
+	5) cat /etc/ansible/hosts
 
-### step 2 - ssh to docker-master-001 - login as rootmessages
+	
+### step 2 - - ssh to each Cluster Member  - login as rootmessages
+
+	1) cat /mnt/gluster/gluster_bpmspacecloud/tmp/id_rsa.pub >> /home/rootmessages./ssh/authorized_keys
+
+
+### step 3 - ssh to docker-master-001 - login as rootmessages
 	![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST 
-	1) ssh  rootmessages@$MASTER001NAME
-	2) ssh  rootmessages@$NODE001NAME
-	3) ssh  rootmessages@$NODE002NAME
+	1) ssh  root@$MASTER001NAME
+	2) ssh  root@$NODE001NAME
+	3) ssh  root@$NODE002NAME
 	4) cat /etc/ansible/hosts
-	5) ansible -m command -a "df -h" SwarmMember
-	6) ansible -m command -a "df -h" SwarmNode
-	7) ansible -m command -a "arch" SwarmMember
-	8) ansible -m shell -a "hostname" SwarmMember
+	5) ansible -u rootmessages -m command -a "df -h" SwarmMember 
+	6) ansible -u rootmessages -m command -a "df -h" SwarmNode
+	7) ansible -u rootmessages -m command -a "arch" SwarmMember
+	8) ansible -u rootmessages -m shell -a "hostname" SwarmMember
+	9) rm /mnt/gluster/gluster_bpmspacecloud/tmp/id_rsa.pub
 
 			
 ## DockerSwarm Initial Setup
