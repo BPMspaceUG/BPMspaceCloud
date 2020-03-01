@@ -41,7 +41,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	1) sudo su root
 	2) /root/BPMspaceCloud/bpmspace_step_04_03_gluster.sh
 
-## Ansibel Initial Setup 
+## Ansible  Initial Setup 
 
 ### step 1 - ssh to docker-master-001 - login as rootmessages
 
