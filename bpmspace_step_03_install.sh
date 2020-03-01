@@ -20,7 +20,9 @@ apt dist-upgrade -y
 apt install -y cron-apt 
 apt install -y xfsprogs 
 apt install -y glusterfs-server 
-apt install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common 
+apt install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
+apt install -y ansible 
+cp /root/BPMspaceCloud/dockerhost/ansible/hosts /etc/ansible/
 
 echo " "
 echo "install docker"

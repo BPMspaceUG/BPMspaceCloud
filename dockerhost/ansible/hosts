@@ -1,0 +1,9 @@
+[SwarmMember]
+	$MASTER001IP
+	$NODE001IP
+	$NODE002IP
+[SwarmManager]
+	$MASTER001IP
+[SwarmNode]
+	$NODE001IP
+	$NODE002IP

@@ -1,14 +1,12 @@
+![BPMspace](https://github.com/BPMspaceUG/BPMspaceCloud/blob/master/_img/bpm-space-logo_600px.png "BPMspace Cloud")
+
 # BPMspaceCloud
 
 ### Prerequisites for MULTI Host Docker Swarm and Gluster
 Linux server with DEBIAN 9 (Stretch) and ssh access and named:
-- docker-master-001.bpmspace.net (e.g. for $MASTER001NAME)
-- docker-node-001.bpmspace.net(e.g. for $NODE001NAME)
-- docker-node-002.bpmspace.net(e.g. for $NODE002NAME)
-
-### Prerequisites for SINGLE Host Docker Swarm without Gluster
-Linux server with DEBIAN 9 (Stretch) and ssh access and named:
-- devtest.bpmspace.net
+- docker-master-001.$DOCKERDOMAIN (e.g. for $MASTER001NAME)
+- docker-node-001.$DOCKERDOMAIN(e.g. for $NODE001NAME)
+- docker-node-002.$DOCKERDOMAIN(e.g. for $NODE002NAME)
 
 ## Initial Setup on each Cluster Member - login as root
 	1) apt update && apt upgrade 
@@ -26,7 +24,6 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	2) /root/BPMspaceCloud/bpmspace_step_03_install.sh
 
 ## ClusterFS Initial Setup - Multi HOST Docker Swarm 
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Note: NOT Needed for a SINGLE HOST Docker Swarm!
 
 ### STEP I  - ssh to each Cluster Member  - login as rootmessages
 	1) sudo su root  
@@ -43,18 +40,24 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 
 	1) sudo su root
 	2) /root/BPMspaceCloud/bpmspace_step_04_03_gluster.sh
-	
-## ClusterFS FAKE Initial Setup - SINGLE HOST Docker Swarm 
-Note: NOT Needed for a MULTI HOST Docker Swarm!  
-### STEP - ssh to Single HOST  - login as rootmessages
-	1) udo su root
-	2) mkdir /mnt/gluster/ -p
-	3) mkdir /mnt/gluster/gluster_bpmspacecloud -p
-	4) mkdir /mnt/gluster/gluster_bpmspacecloud_nodes -p
-	5) cd /mnt/gluster/gluster_bpmspacecloud
-	6) apt install git -y
-	7) git clone https://github.com/BPMspaceUG/BPMspaceCloud.git
 
+## Ansibel Initial Setup 
+
+	1) sudo su root
+	2) ssh-keygen -t rsa -b 4096 -C "rootmessages@$DOCKERDOMAIN" 
+	3) ssh-copy-id rootmessages@$MASTER001NAME
+	4) ssh-copy-id rootmessages@$NODE001NAME
+	5) ssh-copy-id rootmessages@$NODE002NAME
+	![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST 
+	7) ssh  rootmessages@$MASTER001NAME
+	8) ssh  rootmessages@$NODE001NAME
+	9) ssh  rootmessages@$NODE002NAME
+	10) cat /etc/ansible/hosts
+	11) ansible -m command -a "df -h" SwarmMember
+	12) ansible -m command -a "df -h" SwarmNode
+	13) ansible -m command -a "arch" SwarmMember
+	14) ansible -m shell -a "hostname" SwarmMember
+			
 ## DockerSwarm Initial Setup
 
 BPMspaceCloud DockerSwarm is based on the Imixs-Cloud - https://github.com/imixs/imixs-cloud
@@ -63,7 +66,7 @@ _Imixs-Cloud_ is an open infrastructure project, providing a lightweight [docker
 The _Imixs-Cloud_ is based on a [docker swarm](https://docs.docker.com/engine/swarm/) cluster environment.
 Docker swarm is much easier to setup and in its management compared to a Kubernetes cluster. However, when deciding which platform  to use, you should consider your own criterias. _Imixs-Cloud_ is optimized to **build**, **run** and **maintain** business services in small and medium-sized enterprises.
 
-### STEP I - ssh to docker-master-001 OR OR devtest.bpmspace.net - login as rootmessages
+### STEP I - ssh to docker-master-001 - login as rootmessages
 
 	sudo /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_step_05_01_dockerswarm.sh $MASTER001IP
 	
