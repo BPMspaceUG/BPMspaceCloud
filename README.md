@@ -50,6 +50,8 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 	3) sudo cp .ssh/ansible_id_rsa.pub /mnt/gluster/gluster_bpmspacecloud/tmp/
 	4) sudo cat /etc/ansible/hosts
 	5) cat /mnt/gluster/gluster_bpmspacecloud/tmp/ansible_id_rsa.pub >> /home/rootmessages/.ssh/authorized_keys
+	6) touch /home/rootmessages/.ssh/config
+	7) echo "IdentityFile ~/.ssh/ansible_id_rsa" >> /home/rootmessages/.ssh/config
 
 	
 ### step 2 - - ssh to each Node Member  - login as rootmessages
