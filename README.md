@@ -46,7 +46,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 ### step 1 - ssh to docker-master-001 - login as rootmessages
 
 	1) ssh-keygen -t rsa -b 4096 -C "ansible@"$DOCKERDOMAIN -f $HOME/.ssh/ansible_id_rsa
-	2) mkdir /mnt/gluster/gluster_bpmspacecloud/tmp/
+	2) mkdir -p /mnt/gluster/gluster_bpmspacecloud/tmp/
 	3) cp .ssh/ansible_id_rsa.pub /mnt/gluster/gluster_bpmspacecloud/tmp/
 	4) sudo cat /etc/ansible/hosts
 	5) cat /mnt/gluster/gluster_bpmspacecloud/tmp/ansible_id_rsa.pub >> /home/rootmessages/.ssh/authorized_keys
