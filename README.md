@@ -60,7 +60,7 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 
 
 ### step 3 - ssh to docker-master-001 - login as rootmessages
-![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST 
+![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST  
 	1) ssh  rootmessages@$MASTER001NAME
 	2) ssh  rootmessages@$NODE001NAME
 	3) ssh  rootmessages@$NODE002NAME
