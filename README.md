@@ -45,18 +45,16 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 
 ### step 1 - ssh to docker-master-001 - login as rootmessages
 
-	1) sudo su root
-	2) ssh-keygen -t rsa -b 4096 -C "rootmessages@"$DOCKERDOMAIN 
-	3) mkdir /mnt/gluster/gluster_bpmspacecloud/tmp/
-	4) cp .ssh/id_rsa.pub /mnt/gluster/gluster_bpmspacecloud/tmp/
-	5) cat /etc/ansible/hosts
-	6) exit
-	7) cat /mnt/gluster/gluster_bpmspacecloud/tmp/id_rsa.pub >> /home/rootmessages/.ssh/authorized_keys
+	1) ssh-keygen -t rsa -b 4096 -C "ansible@"$DOCKERDOMAIN -f $HOME/.ssh/ansible_id_rsa
+	2) mkdir /mnt/gluster/gluster_bpmspacecloud/tmp/
+	3) cp .ssh/ansible_id_rsa.pub /mnt/gluster/gluster_bpmspacecloud/tmp/
+	4) sudo cat /etc/ansible/hosts
+	5) cat /mnt/gluster/gluster_bpmspacecloud/tmp/ansible_id_rsa.pub >> /home/rootmessages/.ssh/authorized_keys
 
 	
 ### step 2 - - ssh to each Node Member  - login as rootmessages
 
-	1) cat /mnt/gluster/gluster_bpmspacecloud/tmp/id_rsa.pub >> /home/rootmessages/.ssh/authorized_keys
+	1) cat /mnt/gluster/gluster_bpmspacecloud/tmp/ansible_id_rsa.pub >> /home/rootmessages/.ssh/authorized_keys
 
 
 ### step 3 - ssh to docker-master-001 - login as rootmessages
