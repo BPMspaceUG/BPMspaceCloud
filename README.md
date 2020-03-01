@@ -84,8 +84,10 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 
 ### ssh to docker-master-001 - login as rootmessages
 
-	sudo /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_step_05_01_dockerswarm.sh $MASTER001IP
-	ansible -u rootmessages -m shell -a "sudo docker swarm join --token <TOKEN FROM STEP I-4>  <IP@MASTER>:2377" SwarmNode  
+	1) sudo git -C /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/ pull  
+	2) chmod +x  /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/*.sh  
+	3) sudo /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/bpmspace_step_05_01_dockerswarm.sh $MASTER001IP  
+	4) ansible -u rootmessages -m shell -a "sudo docker swarm join --token <TOKEN FROM STEP I-4>  <IP@MASTER>:2377" SwarmNode  
 	
 ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST  
 	1) docker network ls | grep overlay
