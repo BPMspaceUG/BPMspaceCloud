@@ -43,20 +43,25 @@ Linux server with DEBIAN 9 (Stretch) and ssh access and named:
 
 ## Ansibel Initial Setup 
 
+### step 1 - ssh to docker-master-001 - login as rootmessages
+
 	1) sudo su root
 	2) ssh-keygen -t rsa -b 4096 -C "rootmessages@"$DOCKERDOMAIN 
 	3) ssh-copy-id rootmessages@$MASTER001NAME
 	4) ssh-copy-id rootmessages@$NODE001NAME
 	5) ssh-copy-id rootmessages@$NODE002NAME
+
+### step 2 - ssh to docker-master-001 - login as rootmessages
 	![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST 
-	7) ssh  rootmessages@$MASTER001NAME
-	8) ssh  rootmessages@$NODE001NAME
-	9) ssh  rootmessages@$NODE002NAME
-	10) cat /etc/ansible/hosts
-	11) ansible -m command -a "df -h" SwarmMember
-	12) ansible -m command -a "df -h" SwarmNode
-	13) ansible -m command -a "arch" SwarmMember
-	14) ansible -m shell -a "hostname" SwarmMember
+	1) ssh  rootmessages@$MASTER001NAME
+	2) ssh  rootmessages@$NODE001NAME
+	3) ssh  rootmessages@$NODE002NAME
+	4) cat /etc/ansible/hosts
+	5) ansible -m command -a "df -h" SwarmMember
+	6) ansible -m command -a "df -h" SwarmNode
+	7) ansible -m command -a "arch" SwarmMember
+	8) ansible -m shell -a "hostname" SwarmMember
+
 			
 ## DockerSwarm Initial Setup
 
