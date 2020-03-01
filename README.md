@@ -90,6 +90,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 	4) ansible -u rootmessages -m shell -a "sudo docker swarm join --token <TOKEN FROM STEP I-4>  <IP@MASTER>:2377" SwarmNode  
 	
 ![#FFA500](https://placehold.it/15/FFA500/000000?text=+) TEST  
+
 	1) docker network ls | grep overlay
 		Output should look like
 			NETWORK ID	NAME		DRIVER		SCOPE
