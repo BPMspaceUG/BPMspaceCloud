@@ -107,7 +107,7 @@ Docker swarm is much easier to setup and in its management compared to a Kuberne
 ## Portainer Initial Setup - [Portainer Management Console](https:/portainer.bpmspace.net:8880)
 ### ssh to docker-master-001 - login as rootmessages  
 Prerequisites:  
-In the DNS a forward "IN A *.$DOCKERDOMAIN (wildcard) to $MASTER001IP" is configured  
+In the DNS a forward "IN A *.$DOCKERDOMAIN (wildcard) to $MASTER001IP" is configured    
 In /mnt/gluster/gluster_bpmspacecloud/certs/ are valid certs
 	
 	1) sudo git -C /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/ pull  
