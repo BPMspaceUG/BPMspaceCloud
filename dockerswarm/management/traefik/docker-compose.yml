@@ -24,7 +24,7 @@ services:
        - 8080:8080
      volumes:
        - /var/run/docker.sock:/var/run/docker.sock
-       #- /var/cert:/certs/
+       - /mnt/gluster/gluster_bpmspacecloud/certs:/certs/
        - /mnt/gluster/gluster_bpmspacecloud/BPMspaceCloud/dockerswarm/management/traefik/config/:/config/
      deploy:
         mode: global
