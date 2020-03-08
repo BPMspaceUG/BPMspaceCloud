@@ -2,6 +2,7 @@
 echo " "
 echo "let's set hostname to $DOCKERHOSTNAME"
 echo $DOCKERHOSTNAME > /etc/hostname
+echo "127.0.1.1 ".$DOCKERHOSTNAME >> /etc/hosts
 echo " "
 
 echo " "
