@@ -26,8 +26,8 @@ services:
     - ICO-ENV-DEV-mariadb10:/var/lib/mysql
     environment:
     - MYSQL_ROOT_PASSWORD=bpmspace7603476
-    - MYSQL_DATABASE=bpmspace_prms_v1
-    - MYSQL_USER=bpmspace_prms_v1
+    - MYSQL_DATABASE=bpmspace_ico_shop_v1
+    - MYSQL_USER=bpmspace_ico_shop_v1
     - MYSQL_PASSWORD=bpmspace7603476
     networks:
       - proxy-net 
@@ -48,7 +48,7 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.ICO-ENV-DEV-phpmyadmin-mariadb.rule=Host(`ICO-ENV-DEV-phpmyadmin-mariadb10.bpmspace.net`)
+        - traefik.http.routers.ICO-ENV-DEV-phpmyadmin-mariadb.rule=Host(`ICO-ENV-DEV-phpmyadmin-mariadb10.ico.bpmspace.net`)
         - traefik.http.services.ICO-ENV-DEV-phpmyadmin-mariadb-service.loadbalancer.server.port=80
       placement:
         constraints: [node.role == manager]
@@ -73,7 +73,7 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.ICO-ENV-DEV-liam3-server.rule=Host(`ICO-ENV-DEV-liam3-server.bpmspace.net`)
+        - traefik.http.routers.ICO-ENV-DEV-liam3-server.rule=Host(`ICO-ENV-DEV-liam3-server.ico.bpmspace.net`)
         - traefik.http.services.ICO-ENV-DEV-liam3-server-service.loadbalancer.server.port=80
       placement:
         constraints: [node.role == manager]
@@ -91,31 +91,23 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.ICO-ENV-DEV-liam3-client.rule=Host(`ICO-ENV-DEV-liam3-client.bpmspace.net`)
+        - traefik.http.routers.ICO-ENV-DEV-liam3-client.rule=Host(`ICO-ENV-DEV-liam3-client.ico.bpmspace.net`)
         - traefik.http.services.ICO-ENV-DEV-liam3-client-service.loadbalancer.server.port=80
       placement:
         constraints: [node.role == manager]
     networks:
       - proxy-net
 
-  ICO-ENV-DEV-server:
-    image: bpmspace/prms:prms_dev-development_server_master
-    hostname: ICO-ENV-DEV-server
+  ICO-ENV-SHOP-DEV-server:
+    image: bpmspace/ico-shop:ico-shop_master-production_server_master
+    hostname: ICO-ENV-SHOP-DEV-server
     volumes:
-    - ICO-ENV-DEV-server:/var/www/html/
-    depends_on:
-    - ICO-ENV-DEV-mariadb10
-    environment:
-    - DB_HOST=ICO-ENV-DEV-mariadb10
-    - DB_PORT=3306
-    - DB_NAME=bpmspace_prms_v1
-    - DB_USER=bpmspace_prms_v1
-    - DB_PASSWORD=bpmspace7603476
+    - ICO-ENV-DEV-shop-server:/var/www/html/
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.ICO-ENV-DEV-server.rule=Host(`ICO-ENV-DEV-server.bpmspace.net`)
-        - traefik.http.services.ICO-ENV-DEV-server-service.loadbalancer.server.port=80
+        - traefik.http.routers.ICO-ENV-SHOP-DEV-server.rule=Host(`ICO-ENV-SHOP-DEV-server.ico.bpmspace.net`)
+        - traefik.http.services.ICO-ENV-SHOP-DEV-server-service.loadbalancer.server.port=80
       placement:
         constraints: [node.role == manager]
     networks:
@@ -127,7 +119,7 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.ICO-ENV-DEV-mailhog.rule=Host(`ICO-ENV-DEV-mailhog.bpmspace.net`)
+        - traefik.http.routers.ICO-ENV-DEV-mailhog.rule=Host(`ICO-ENV-DEV-mailhog.ico.bpmspace.net`)
         - traefik.http.services.ICO-ENV-DEV-mailhog-service.loadbalancer.server.port=8025
       placement:
         constraints: [node.role == manager]
@@ -141,13 +133,13 @@ services:
     depends_on:
     - ICO-ENV-DEV-liam3-server
     - ICO-ENV-DEV-liam3-client
-    - ICO-ENV-DEV-server
+    - ICO-ENV-SHOP-DEV-server
     ports:
         - "7373:22"
     volumes:
     - ICO-ENV-DEV-liam3-server:/home/developer/ICO-ENV-DEV-liam3-server
     - ICO-ENV-DEV-liam3-client:/home/developer/ICO-ENV-DEV-liam3-client
-    - ICO-ENV-DEV-server:/home/developer/ICO-ENV-DEV-server
+    - ICO-ENV-DEV-shop-server:/home/developer/ICO-ENV-DEV-shop-server
     deploy:
       placement:
         constraints: [node.role == manager]
