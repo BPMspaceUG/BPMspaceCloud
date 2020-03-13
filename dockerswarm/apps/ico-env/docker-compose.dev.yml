@@ -60,7 +60,7 @@ services:
     hostname: ICO-ENV-DEV-liam3-server
     volumes:
     - ICO-ENV-DEV-liam3-server:/var/www/html
-    - /mnt/gluster/gluster_bpmspacecloud/conf/ico-liam3_prms/dev/liam3_server_config.SECRET.inc.php:/var/www/html/config.SECRET.inc.php
+    - /mnt/sdb/gluster/conf/ico-env/dev/liam3_server_config.SECRET.inc.php:/var/www/html/config.SECRET.inc.php
     depends_on:
     - ICO-ENV-DEV-liam3-mariadb10
     environment:
@@ -85,7 +85,7 @@ services:
     hostname: ICO-ENV-DEV-liam3-client
     volumes:
     - ICO-ENV-DEV-liam3-client:/var/www/html
-    - /mnt/gluster/gluster_bpmspacecloud/conf/ico-liam3_prms/dev/liam3_client_config.SECRET.inc.php:/var/www/html/inc/liam3_Client_api.secret.inc.php
+    - /mnt/sdb/gluster/conf/ico-env/dev/liam3_client_config.SECRET.inc.php:/var/www/html/inc/liam3_Client_api.secret.inc.php
     depends_on:
     - ICO-ENV-DEV-liam3-server
     deploy:
@@ -99,10 +99,17 @@ services:
       - proxy-net
 
   ICO-ENV-SHOP-DEV-server:
-    image: bpmspace/ico-shop:ico-shop_master-production_server_master
+    image: bpmspace/docker_bpmspace_base:production_server_master
     hostname: ICO-ENV-SHOP-DEV-server
     volumes:
     - ICO-ENV-DEV-shop-server:/var/www/html/
+    environment:
+    - DB_HOST=ICO-ENV-DEV-mariadb10
+    - DB_PORT=3306
+    - DB_NAME=bpmspace_ico_shop_v1
+    - DB_USER=bpmspace_ico_shop_v1
+    - DB_PASSWORD=bpmspace7603476
+    - DB_ROOT_PASSWORD=bpmspace7603476
     deploy:
       labels:
         - traefik.enable=true
