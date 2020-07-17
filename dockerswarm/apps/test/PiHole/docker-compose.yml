@@ -1,0 +1,42 @@
+# pihole4kids
+version: '3.7'
+
+networks:
+ proxy-net:
+   external: true
+   
+volumes:
+  pihole:
+  pihole-dnsmasq.d:
+
+services:
+
+  pihole:
+    container_name: pihole
+    restart: always
+    image: diginc/pi-hole:debian
+    dns:
+    - 127.0.0.1
+    - 9.9.9.9
+    environment:
+    - ServerIP=51.68.191.131
+    - ServerIPv6=
+    - TZ=Europe/Berlin
+    - DNS1=78.47.243.3
+    - DNS2=172.105.72.56
+    networks:
+      - proxy-net
+    volumes:
+    - pihole:/etc/pihole/
+    - pihole-dnsmasq.d:/etc/dnsmasq.d/
+    ports:
+    - "8888:80"
+    - "53:53/tcp"
+    - "53:53/udp"
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.pihole4kids.rule=Host(`pihole4kids.ico.bpmspace.net`)
+        - traefik.http.services.pihole4kids.loadbalancer.server.port=80
+      placement:
+        constraints: [node.role == manager]
